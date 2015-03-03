@@ -1,5 +1,7 @@
 {
+    "name" : "claudinec/energyfreedom-pledge",
     "require": {
+        "adoy/oauth2": "dev-master",
         "liquid/liquid" : "~1.0",
         "silex/silex": "~1.2"
     }

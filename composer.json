@@ -1,6 +1,5 @@
 {
     "require": {
-        "authbucket/oauth2-php": "~2.4",
         "liquid/liquid" : "~1.0",
         "silex/silex": "~1.2"
     }

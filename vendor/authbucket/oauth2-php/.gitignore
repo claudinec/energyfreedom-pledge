@@ -1,6 +1,0 @@
-app/cache/*
-app/logs/*
-build/
-composer.lock
-composer.phar
-vendor/

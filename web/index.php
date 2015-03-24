@@ -14,23 +14,27 @@ $app = new Silex\Application();
 $app['debug'] = true;
 
 /**
- * NationBuilder configuration.
+ * Global variables.
  *
- * Variables in config/nationbuilder.php:
+ * Variables set in config/nationbuilder.php:
  * - $clientId
  * - $clientSecret
- * - $authorizeUrl
  */
 require __DIR__ . '/../config/nationbuilder.php';
 $client      = new OAuth2\Client($clientId, $clientSecret);
 $redirectUrl = 'http://energyfreedom-pledge.dev:8888/oauth_callback';
+$authorizeUrl   = 'https://beyondzeroemissions.nationbuilder.com/oauth/authorize';
 $authUrl     = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);
     
 /**
- * Default path.
+ * Default path – pledge lookup.
  */
 $app->get('/', function() {
-  return 'Are you looking for the NationBuilder <a href="/auth">authentication page</a>?';
+    // Test.
+    $baseApiUrl = 'https://beyondzeroemissions.nationbuilder.com';
+    $response = $client->fetch($baseApiUrl . '/api/v1/sites');
+    // print_r($response);
+    return $response;
 });
 
 /**
@@ -57,11 +61,6 @@ $app->get('/oauth_callback', function () use ($app) {
     // Set the client token.
     $token = $response['result']['access_token'];
     $client->setAccessToken($token);
-
-    // Test.
-    $baseApiUrl = 'https://beyondzeroemissions.nationbuilder.com';
-    $response = $client->fetch($baseApiUrl . '/api/v1/sites');
-    print_r($response);
 
     return $token;
 });

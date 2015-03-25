@@ -65,4 +65,14 @@ $app->get('/oauth_callback', function () use ($app) {
     return $token;
 });
 
+/**
+ * Display login options: Facebook, Twitter or email.
+ *
+ * If user does not have an account, direct them to nationbuilder site.
+ */
+
+/**
+ * Query custom field values and pre-fill form with them.
+ */
+
 $app->run();

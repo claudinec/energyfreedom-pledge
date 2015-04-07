@@ -28,21 +28,38 @@ $authorizeUrl   = 'https://beyondzeroemissions.nationbuilder.com/oauth/authorize
 $authUrl        = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);
 
 /**
+ * Error handling.
+ */
+use Symfony\Component\HttpFoundation\Response;
+
+$app->error(function (\Exception $e, $code) {
+    if ($app['debug']) {
+      return;
+    }
+
+    return new Response("Something went wrong: \n<pre>" . $e . "</pre>");
+});
+
+/**
  * Default path – pledge lookup.
  */
 $app->get('/', function() use ($app, $client) {
     $baseApiUrl = 'https://beyondzeroemissions.nationbuilder.com';
 
+    /* Test. */
+    // $response = $client->fetch($baseApiUrl . '/api/v1/sites.json');
+    // print_r($response);
+    return new Response("OK!");
+
     // Display login options: Facebook, Twitter or email.
 
     // DEBUG HERE
     // Display current user login email address.
-    $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
-    $result = json_decode($response);
-    $email = $result['result']['person']['email'];
+    // $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
+    // $result = json_decode($response);
+    /* $email = $result['result']['person']['email']; */
     // $email = $response->{'person'}->{'email'};
-    return "Your email address is " . $email;
-    // return $response;
+    // return new Response("Your email address is " . $email);
 });
 
 /**
@@ -57,7 +74,7 @@ $app->get('/auth', function () use ($app) {
  * OAuth callback path.
  */
 $app->get('/oauth_callback', function () use ($app) {
-    global $client, $redirectUrl;
+    global $appUrl, $client, $redirectUrl;
     $code = $app['request']->get('code');
 
     // Generate a token response.

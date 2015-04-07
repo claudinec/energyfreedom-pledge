@@ -1,12 +1,12 @@
 <?php
 /**
- * PHP exercises for NationBuilder developer certification.
+ * Energy Freedom Pledge editing app.
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $oauth_path = __DIR__ . '/../vendor/adoy/oauth2/src/OAuth2/';
-require $oauth_path . 'client.php';
+require $oauth_path . 'Client.php';
 require $oauth_path . 'GrantType/IGrantType.php';
 require $oauth_path . 'GrantType/AuthorizationCode.php';
 
@@ -21,20 +21,28 @@ $app['debug'] = true;
  * - $clientSecret
  */
 require __DIR__ . '/../config/nationbuilder.php';
-$client      = new OAuth2\Client($clientId, $clientSecret);
-$redirectUrl = 'http://energyfreedom-pledge.dev:8888/oauth_callback';
+$client         = new OAuth2\Client($clientId, $clientSecret);
+$appUrl         = 'http://energyfreedom-pledge.dev:8888/';
+$redirectUrl    = $appUrl . 'oauth_callback';
 $authorizeUrl   = 'https://beyondzeroemissions.nationbuilder.com/oauth/authorize';
-$authUrl     = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);
-    
+$authUrl        = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);
+
 /**
  * Default path – pledge lookup.
  */
-$app->get('/', function() {
-    // Test.
+$app->get('/', function() use ($app, $client) {
     $baseApiUrl = 'https://beyondzeroemissions.nationbuilder.com';
-    $response = $client->fetch($baseApiUrl . '/api/v1/sites');
-    // print_r($response);
-    return $response;
+
+    // Display login options: Facebook, Twitter or email.
+
+    // DEBUG HERE
+    // Display current user login email address.
+    $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
+    $result = json_decode($response);
+    $email = $result['result']['person']['email'];
+    // $email = $response->{'person'}->{'email'};
+    return "Your email address is " . $email;
+    // return $response;
 });
 
 /**
@@ -55,21 +63,13 @@ $app->get('/oauth_callback', function () use ($app) {
     // Generate a token response.
     $accessTokenUrl = 'https://beyondzeroemissions.nationbuilder.com/oauth/token';
     $params = array('code' => $code, 'redirect_uri' => $redirectUrl);
-    // DEBUG HERE.
     $response = $client->getAccessToken($accessTokenUrl, 'authorization_code', $params);
 
     // Set the client token.
     $token = $response['result']['access_token'];
     $client->setAccessToken($token);
-
-    return $token;
+    return $app->redirect($appUrl);
 });
-
-/**
- * Display login options: Facebook, Twitter or email.
- *
- * If user does not have an account, direct them to nationbuilder site.
- */
 
 /**
  * Query custom field values and pre-fill form with them.

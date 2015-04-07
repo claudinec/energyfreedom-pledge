@@ -49,23 +49,25 @@ $app->get('/', function() use ($app, $client) {
     /* Test. */
     // $response = $client->fetch($baseApiUrl . '/api/v1/sites.json');
     // print_r($response);
-    return new Response("OK!");
+    // return new Response("OK!");
+    // global $token;
+    // print_r($token);
 
     // Display login options: Facebook, Twitter or email.
 
     // DEBUG HERE
     // Display current user login email address.
-    // $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
-    // $result = json_decode($response);
-    /* $email = $result['result']['person']['email']; */
+    $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
+    $result = json_decode($response);
+    $email = $result['result']['person']['email'];
     // $email = $response->{'person'}->{'email'};
-    // return new Response("Your email address is " . $email);
+    return new Response("Your email address is " . $email);
 });
 
 /**
  * Authenticate to NationBuilder.
  */
-$app->get('/auth', function () use ($app) {
+$app->get('/auth', function () use ($app, $client) {
     global $authUrl;
     return $app->redirect($authUrl);
 });
@@ -73,8 +75,8 @@ $app->get('/auth', function () use ($app) {
 /**
  * OAuth callback path.
  */
-$app->get('/oauth_callback', function () use ($app) {
-    global $appUrl, $client, $redirectUrl;
+$app->get('/oauth_callback', function () use ($app, $client) {
+    global $appUrl, $redirectUrl;
     $code = $app['request']->get('code');
 
     // Generate a token response.
@@ -85,6 +87,8 @@ $app->get('/oauth_callback', function () use ($app) {
     // Set the client token.
     $token = $response['result']['access_token'];
     $client->setAccessToken($token);
+
+    // Return to app.
     return $app->redirect($appUrl);
 });
 

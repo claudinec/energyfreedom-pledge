@@ -22,7 +22,7 @@ $app['debug'] = true;
  */
 require __DIR__ . '/../config/nationbuilder.php';
 $client         = new OAuth2\Client($clientId, $clientSecret);
-$appUrl         = 'http://energyfreedom-pledge.dev:8888/';
+$appUrl         = 'http://energyfreedom-pledge.local:8888/';
 $redirectUrl    = $appUrl . 'oauth_callback';
 $authorizeUrl   = 'https://beyondzeroemissions.nationbuilder.com/oauth/authorize';
 $authUrl        = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);

@@ -21,10 +21,11 @@ $app['debug'] = true;
  * - $clientSecret
  */
 require __DIR__ . '/../config/nationbuilder.php';
-$client         = new OAuth2\Client($clientId, $clientSecret);
 $appUrl         = 'http://energyfreedom-pledge.local:8888/';
 $redirectUrl    = $appUrl . 'oauth_callback';
 $authorizeUrl   = 'https://beyondzeroemissions.nationbuilder.com/oauth/authorize';
+
+$client         = new OAuth2\Client($clientId, $clientSecret);
 $authUrl        = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);
 
 /**
@@ -37,7 +38,7 @@ $app->error(function (\Exception $e, $code) {
       return;
     }
 
-    return new Response("Something went wrong: \n<pre>" . $e . "</pre>");
+    return new Response($code . " error: \n<pre>" . $e . "</pre>");
 });
 
 /**
@@ -45,32 +46,33 @@ $app->error(function (\Exception $e, $code) {
  */
 $app->get('/', function() use ($app, $client) {
     $baseApiUrl = 'https://beyondzeroemissions.nationbuilder.com';
+    global $authUrl;
 
-    /* Test. */
-    // $response = $client->fetch($baseApiUrl . '/api/v1/sites.json');
-    // print_r($response);
-    // return new Response("OK!");
-    // global $token;
-    // print_r($token);
+    if (!isset($_GET['code'])) {
+      return $app->redirect($authUrl);
+    }
+    else {
+      $response = $client->fetch($baseApiUrl . '/api/v1/sites.json');
+      return $response;
+    }
 
-    // Display login options: Facebook, Twitter or email.
-
+    // Is user logged in?
     // DEBUG HERE
-    // Display current user login email address.
-    $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
-    $result = json_decode($response);
-    $email = $result['result']['person']['email'];
-    // $email = $response->{'person'}->{'email'};
-    return new Response("Your email address is " . $email);
+    // $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
+    // $result = json_decode($response);
+    // $email = $response['result']['person']['email'];
+    // return new Response("Your email address is " . $email);
+    // print_r($response);
+    // return new Response("You are logged in as " . $response['result']['person']['full_name']);
 });
 
 /**
  * Authenticate to NationBuilder.
  */
-$app->get('/auth', function () use ($app, $client) {
-    global $authUrl;
-    return $app->redirect($authUrl);
-});
+// $app->get('/auth', function () use ($app, $client) {
+//     global $authUrl;
+//     return $app->redirect($authUrl);
+// });
 
 /**
  * OAuth callback path.

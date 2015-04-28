@@ -44,6 +44,13 @@ $app->error(function (\Exception $e, $code) {
 });
 
 /**
+ * Register Twig provider.
+ */
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/views',
+));
+
+/**
  * Default path – pledge lookup.
  */
 $app->get('/', function() use ($app, $client) {

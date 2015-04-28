@@ -113,7 +113,8 @@ $app->get('/pledge', function () use ($app, $client) {
 	die($error);
     }
 
-    return new Response("You are logged in as " . $response['result']['person']['full_name'] . ".");
+    // Template for page content.
+    return new Response("<p>You are logged in as <strong>" . $response['result']['person']['full_name'] . "</strong>.</p><p>If this isn't you, please <a href="'http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout?page_id=17'">sign out and try again.</p>");
 
     /**
      * Query custom field values and pre-fill form with them.

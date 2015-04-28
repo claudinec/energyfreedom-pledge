@@ -22,7 +22,7 @@ $app['debug'] = true;
  */
 require __DIR__ . '/../config/nationbuilder.php';
 $appUrl         = 'http://energyfreedom-pledge.local:8888/';
-$redirectUrl    = $appUrl . 'pledges';
+$redirectUrl    = $appUrl . 'pledge';
 
 $baseApiUrl     = 'https://beyondzeroemissions.nationbuilder.com';
 $authorizeUrl   = $baseApiUrl . '/oauth/authorize';
@@ -51,10 +51,10 @@ $app->get('/', function() use ($app, $client) {
     global $authUrl, $baseApiUrl;
 
     // If we don't have an auth code, redirect to auth url.
-    // If we do, redirect to the pledge app.
     if (!isset($_GET['code'])) {
         return $app->redirect($authUrl);
     }
+    // If we do, redirect to the pledge app.
     else {
         return $app->redirect($redirectUrl);
     }
@@ -63,7 +63,7 @@ $app->get('/', function() use ($app, $client) {
 /**
  * OAuth callback path.
  */
-$app->get('/pledges', function () use ($app, $client) {
+$app->get('/pledge', function () use ($app, $client) {
     global $appUrl, $baseApiUrl, $redirectUrl;
     $code = $app['request']->get('code');
 

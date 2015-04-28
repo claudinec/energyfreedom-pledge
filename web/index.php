@@ -37,7 +37,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app->error(function (\Exception $e, $code) {
     if ($app['debug']) {
-      return;
+        return;
     }
 
     return new Response($code . " error: \n<pre>" . $e . "</pre>");
@@ -56,24 +56,8 @@ $app->get('/', function() use ($app, $client) {
         return $app->redirect($authUrl);
     }
     else {
-      return $app->redirect($redirectUrl);
+        return $app->redirect($redirectUrl);
     }
-
-    // Do something.
-            $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
-    // See if we got a valid response back or an error.
-    if (isset($response['result']['error'])) {
-			$error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
-				. $response['result']['error_description'] . "<br>";
-
-	// End execution and display error message.
-	die($error);
-    }
-
-	    print_r($response);
-	    // 	    return $response;
-	    return "OK!";
-
 });
 
 /**
@@ -90,19 +74,19 @@ $app->get('/pledges', function () use ($app, $client) {
 
     // See if we got a valid token back or an error.
     if (isset($response['result']['error'])) {
-	switch($response['result']['error']) {
-		case 'invalid_grant':
- 			$error = "<b>ERROR</b>: Invalid Grant. This code is invalid, expired, or revoked.<br>";
-			break;
+    switch($response['result']['error']) {
+        case 'invalid_grant':
+            $error = "<b>ERROR</b>: Invalid Grant. This code is invalid, expired, or revoked.<br>";
+            break;
 
-		default:
-			$error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
-				. $response['result']['error_description'] . "<br>";
-			break;
-	}
+        default:
+            $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
+                . $response['result']['error_description'] . "<br>";
+            break;
+    }
 
-	// End execution and display error message.
-	die($error);
+    // End execution and display error message.
+       die($error);
     }
 
     // Set the client token.
@@ -117,11 +101,11 @@ $app->get('/pledges', function () use ($app, $client) {
 
     // See if we got a valid response back or an error.
     if (isset($response['result']['error'])) {
-			$error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
-				. $response['result']['error_description'] . "<br>";
+        $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
+            . $response['result']['error_description'] . "<br>";
 
-	// End execution and display error message.
-	die($error);
+    // End execution and display error message.
+    die($error);
     }
 
     // $email = $response['result']['person']['email'];

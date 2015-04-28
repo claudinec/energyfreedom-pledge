@@ -116,7 +116,7 @@ $app->get('/pledge', function () use ($app, $client) {
     // Query custom field values and pre-fill form with them.
 
     // Template for page content.
-    return $app['twig']->render('signin.twig', array(
+    return $app['twig']->render('pledge.twig', array(
             'title' => 'Energy Freedom Pledge Viewer',
             'name' => $response['result']['person']['full_name'],
             'house_type' => $response['result']['person']['house_type'],

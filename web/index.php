@@ -47,11 +47,11 @@ $app->error(function (\Exception $e, $code) {
  * Register Twig provider.
  */
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
+    'twig.path' => __DIR__ . '/../views',
 ));
 
 /**
- * Default path – pledge lookup.
+ * Default path – check authentication.
  */
 $app->get('/', function() use ($app, $client) {
     // global $authUrl, $token;
@@ -109,17 +109,19 @@ $app->get('/pledge', function () use ($app, $client) {
         $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
             . $response['result']['error_description'] . "<br>";
 
-	// End execution and display error message.
-	die($error);
+	    // End execution and display error message.
+	    die($error);
     }
 
+    // Query custom field values and pre-fill form with them.
+
     // Template for page content.
-    return new Response("<p>You are logged in as <strong>" . $response['result']['person']['full_name'] . "</strong>.</p><p>If this isn't you, please <a href="'http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout?page_id=17'">sign out and try again.</p>");
-
-    /**
-     * Query custom field values and pre-fill form with them.
-     */
-
+    return $app['twig']->render('signin.twig', array(
+            'title' => 'Energy Freedom Pledge Viewer',
+            'name' => $response['result']['person']['full_name'],
+            'house_type' => $response['result']['person']['house_type'],
+        )
+    );
 });
 
 $app->run();

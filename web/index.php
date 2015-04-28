@@ -61,7 +61,7 @@ $app->get('/', function() use ($app, $client) {
 });
 
 /**
- * OAuth callback path.
+ * The pledge app.
  */
 $app->get('/pledge', function () use ($app, $client) {
     global $appUrl, $baseApiUrl, $redirectUrl;
@@ -91,25 +91,21 @@ $app->get('/pledge', function () use ($app, $client) {
 
     // Set the client token.
     $token = $response['result']['access_token'];
-    //     $client->setAccessTokenType(1);
     $client->setAccessToken($token);
 
     // Is user logged in?
     $response = $client->fetch($baseApiUrl . '/api/v1/people/me.json');
     $result = json_decode($response);
 
-
     // See if we got a valid response back or an error.
     if (isset($response['result']['error'])) {
         $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
             . $response['result']['error_description'] . "<br>";
 
-    // End execution and display error message.
-    die($error);
+	// End execution and display error message.
+	die($error);
     }
 
-    // $email = $response['result']['person']['email'];
-    // return new Response("Your email address is " . $email);
     return new Response("You are logged in as " . $response['result']['person']['full_name'] . ".");
 
     /**

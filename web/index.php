@@ -1,6 +1,6 @@
 <?php
 /**
- * Energy Freedom Pledge editing app.
+ * Energy Freedom Pledge Viewer.
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';

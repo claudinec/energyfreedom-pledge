@@ -25,41 +25,124 @@
 
         {### House ###}
 
+        {#
         <div class="row">
           <div class="large-12 columns">
             <div class="callout panel">
+            </div>
+          </div>
+        </div>
+        #}
+
+        <div class="row">
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
                 <p>What type of house do you have?</p>
+            </div>
+          </div>
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
                 <p>{{ house_type }}
-                    {% if house_type_other is defined %} house_type_other {% endif %}
+                    {% if house_type_other is defined %} {{ house_type_other }} {% endif %}
                 </p>
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="large-6 medium-6 columns">
             <div class="callout panel">
+                <p>What are your walls constructed from?</p>
             </div>
           </div>
           <div class="large-6 medium-6 columns">
             <div class="callout panel">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
+                <p>
+                    {% if brick_veneer is defined %} Brick veneer<br/> {% endif %}
+                    {% if double_brick is defined %} Double brick<br/> {% endif %}
+                    {% if weatherboard is defined %} Weatherboard<br/> {% endif %}
+                    {% if al_cladding is defined %} Aluminium cladding<br/> {% endif %}
+                    {% if panels is defined %} Structurally integrated panels<br/> {% endif %}
+                    {% if wall_construction_other is defined %} {{ wall_construction_other }}<br/> {% endif %}
+                </p>
             </div>
           </div>
         </div>
 
+        <div class="row">
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+                <p>What kind of insulation do you have in your walls?</p>
+            </div>
+          </div>
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+                <p>
+                    {% if wall_batts is defined %} Batts<br/> {% endif %}
+                    {% if wall_infill is defined %} Foam infill<br/> {% endif %}
+                    {% if wall_foil is defined %} Reflective foil<br/> {% endif %}
+                    {% if no_ins is defined %} No insulation<br/> {% endif %}
+                    {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
+                </p>
+            </div>
+          </div>
+        </div>
+
+    <hr>
+
+        <div class="row">
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+                <p>What is your roof constructed from?</p>
+            </div>
+          </div>
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+                <p>
+                    {% if tiles is defined %} Tiles<br/> {% endif %}
+                    {% if corrugated_metal is defined %} Corrugated metal<br/> {% endif %}
+                    {% if slate is defined %} Slate<br/> {% endif %}
+                    {% if roof_construction_other is defined %} {{ roof_construction_other }}<br/> {% endif %}
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+                <p>What kind of insulation do you have in your roof?</p>
+            </div>
+          </div>
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+                <p>
+                    {% if roof_batts is defined %} Batts<br/> {% endif %}
+                    {% if roof_infill is defined %} Foam infill<br/> {% endif %}
+                    {% if roof_foil is defined %} Reflective foil<br/> {% endif %}
+                    {% if no_roof_ins is defined %} No insulation<br/> {% endif %}
+                    {% if roof_insulation_other is defined %} {{ roof_insulation_other }}<br/> {% endif %}
+                </p>
+            </div>
+          </div>
+        </div>
+
+        {#
+        <div class="row">
+          <div class="large-4 medium-4 small-4 columns">
+            <div class="callout panel">
+            </div>
+          </div>
+          <div class="large-4 medium-4 small-4 columns">
+            <div class="callout panel">
+            </div>
+          </div>
+          <div class="large-4 medium-4 small-4 columns">
+            <div class="callout panel">
+            </div>
+          </div>
+        </div>
+        #}
 
     <hr>
 

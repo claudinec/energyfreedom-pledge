@@ -12,11 +12,6 @@
     <div class="row">
       <div class="large-12 columns">
         <h1>{{ title }}</h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-8 medium-8 columns">
 
         {### User ###}
         <h4>Welcome, {{ name }}.</h4>
@@ -25,16 +20,7 @@
       </div>
     </div>
 
-        {### House ###}
-
-        {#
-        <div class="row">
-          <div class="large-12 columns">
-            <div class="callout panel">
-            </div>
-          </div>
-        </div>
-        #}
+    {### House ###}
 
     <div>
       <div>
@@ -94,6 +80,8 @@
       </div>
     </div>
 
+    {### Roof ###}
+
     <div class="row">
 
       <hr>
@@ -134,28 +122,71 @@
       </div>
     </div>
 
-        {#
-        <div class="row">
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-            </div>
-          </div>
-        </div>
-        #}
+    {### Floor ###}
 
     <div class="row">
+
       <hr>
 
-      <div class="large-8 medium-8 columns">
+      <div class="large-6 medium-6 columns">
+        <div class="callout panel">
+          <p>What is your floor constructed from?</p>
+        </div>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <div class="callout panel">
+          <p>
+            {% if slab_on_ground is defined %} Concrete slab on ground<br/> {% endif %}
+            {% if slab_off_ground is defined %} Concrete slab off ground<br/> {% endif %}
+            {% if timber_boards is defined %} Timber boards<br/> {% endif %}
+            {% if floor_construction_other is defined %} {{ floor_construction_other }}<br/> {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <div class="callout panel">
+          <p>What kind of underfloor insulation do you have?</p>
+        </div>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <div class="callout panel">
+          <p>
+            {% if floor_batts is defined %} Batts<br/> {% endif %}
+            {% if floor_infill is defined %} Foam infill<br/> {% endif %}
+            {% if floor_foil is defined %} Reflective foil<br/> {% endif %}
+            {% if no_floor_ins is defined %} No insulation<br/> {% endif %}
+            {% if floor_insulation_other is defined %} {{ floor_insulation_other }}<br/> {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <div class="callout panel">
+          <p>Floor coverings</p>
+        </div>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <div class="callout panel">
+          <p>
+            {% if rooms_carpeted is defined %} {{ rooms_carpeted }} % rooms carpeted<br/> {% endif %}
+            {% if rooms_tiled is defined %} {{ rooms_tiled }} % rooms tiled<br/> {% endif %}
+            {% if rooms_timber_floors is defined %} {{ rooms_timber_floors }} % rooms with timber floors {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {### End form ###}
+    <div class="row">
+
+      <hr>
+
+      <div class="large-12 columns">
         <p><a href="/">Start again.</a></p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Energy Freedom Pledge editing app.
+ * Energy Freedom Pledge Viewer.
  */
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -44,7 +44,14 @@ $app->error(function (\Exception $e, $code) {
 });
 
 /**
- * Default path – pledge lookup.
+ * Register Twig provider.
+ */
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__ . '/../views',
+));
+
+/**
+ * Default path – check authentication.
  */
 $app->get('/', function() use ($app, $client) {
     // global $authUrl, $token;
@@ -102,16 +109,20 @@ $app->get('/pledge', function () use ($app, $client) {
         $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
             . $response['result']['error_description'] . "<br>";
 
-	// End execution and display error message.
-	die($error);
+	    // End execution and display error message.
+	    die($error);
     }
 
-    return new Response("You are logged in as " . $response['result']['person']['full_name'] . ".");
+    // Query custom field values and pre-fill form with them.
 
-    /**
-     * Query custom field values and pre-fill form with them.
-     */
-
+    // Template for page content.
+    return $app['twig']->render('pledge.twig', array(
+            'title' => 'Energy Freedom Pledge Viewer',
+            'name' => $response['result']['person']['full_name'],
+            'house_type' => $response['result']['person']['house_type'],
+            'house_type_other' => $response['result']['person']['house_type_other'],
+        )
+    );
 });
 
 $app->run();

@@ -14,9 +14,11 @@
         <h1>{{ title }}</h1>
 
         {### User ###}
-        <h4>Welcome, {{ name }}.</h4>
+        <div class="panel">
+          <h4>Welcome, {{ name }}.</h4>
 
-        <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout?page_id=17">sign out</a> and try again.</p>
+          <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout?page_id=17">sign out</a> and try again.</p>
+        </div>
       </div>
     </div>
 
@@ -26,16 +28,12 @@
       <div>
         <div class="row">
           <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-                <p>What type of house do you have?</p>
-            </div>
+            <p>What type of house do you have?</p>
           </div>
           <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-                <p>{{ house_type }}
-                    {% if house_type_other is defined %} {{ house_type_other }} {% endif %}
-                </p>
-            </div>
+            <p>{{ house_type }}
+                {% if house_type_other is defined %} {{ house_type_other }} {% endif %}
+            </p>
           </div>
         </div>
       </div>
@@ -43,40 +41,31 @@
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>What are your walls constructed from?</p>
-        </div>
+        <p>What are your walls constructed from?</p>
       </div>
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>
-            {% if brick_veneer is defined %} Brick veneer<br/> {% endif %}
-            {% if double_brick is defined %} Double brick<br/> {% endif %}
-            {% if weatherboard is defined %} Weatherboard<br/> {% endif %}
-            {% if al_cladding is defined %} Aluminium cladding<br/> {% endif %}
-            {% if panels is defined %} Structurally integrated panels<br/> {% endif %}
-            {% if wall_construction_other is defined %} {{ wall_construction_other }}<br/> {% endif %}
-          </p>
-        </div>
+        <p>
+          {% if brick_veneer is defined %} Brick veneer<br/> {% endif %}
+          {% if double_brick is defined %} Double brick<br/> {% endif %}
+          {% if weatherboard is defined %} Weatherboard<br/> {% endif %}
+          {% if al_cladding is defined %} Aluminium cladding<br/> {% endif %}
+          {% if panels is defined %} Structurally integrated panels<br/> {% endif %}
+          {% if wall_construction_other is defined %} {{ wall_construction_other }}<br/> {% endif %}
+        </p>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>What kind of insulation do you have in your walls?</p>
-        </div>
+        <p>What kind of insulation do you have in your walls?</p>
       </div>
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>
-            {% if wall_batts is defined %} Batts<br/> {% endif %}
-            {% if wall_infill is defined %} Foam infill<br/> {% endif %}
-            {% if wall_foil is defined %} Reflective foil<br/> {% endif %}
-            {% if no_ins is defined %} No insulation<br/> {% endif %}
-            {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
-          </p>
-        </div>
+        <p>
+          {% if wall_batts is defined %} Batts<br/> {% endif %}
+          {% if wall_infill is defined %} Foam infill<br/> {% endif %}
+          {% if wall_foil is defined %} Reflective foil<br/> {% endif %}
+          {% if no_ins is defined %} No insulation<br/> {% endif %}            {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
+        </p>
       </div>
     </div>
 
@@ -87,38 +76,30 @@
       <hr>
 
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>What is your roof constructed from?</p>
-        </div>
+        <p>What is your roof constructed from?</p>
       </div>
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>
-            {% if tiles is defined %} Tiles<br/> {% endif %}
-            {% if corrugated_metal is defined %} Corrugated metal<br/> {% endif %}
-            {% if slate is defined %} Slate<br/> {% endif %}
-            {% if roof_construction_other is defined %} {{ roof_construction_other }}<br/> {% endif %}
-          </p>
-        </div>
+        <p>
+          {% if tiles is defined %} Tiles<br/> {% endif %}
+          {% if corrugated_metal is defined %} Corrugated metal<br/> {% endif %}
+          {% if slate is defined %} Slate<br/> {% endif %}
+          {% if roof_construction_other is defined %} {{ roof_construction_other }}<br/> {% endif %}
+        </p>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>What kind of insulation do you have in your roof?</p>
-        </div>
+        <p>What kind of insulation do you have in your roof?</p>
       </div>
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>
-            {% if roof_batts is defined %} Batts<br/> {% endif %}
-            {% if roof_infill is defined %} Foam infill<br/> {% endif %}
-            {% if roof_foil is defined %} Reflective foil<br/> {% endif %}
-            {% if no_roof_ins is defined %} No insulation<br/> {% endif %}
-            {% if roof_insulation_other is defined %} {{ roof_insulation_other }}<br/> {% endif %}
-          </p>
-        </div>
+        <p>
+          {% if roof_batts is defined %} Batts<br/> {% endif %}
+          {% if roof_infill is defined %} Foam infill<br/> {% endif %}
+          {% if roof_foil is defined %} Reflective foil<br/> {% endif %}
+          {% if no_roof_ins is defined %} No insulation<br/> {% endif %}
+          {% if roof_insulation_other is defined %} {{ roof_insulation_other }}<br/> {% endif %}
+        </p>
       </div>
     </div>
 
@@ -129,46 +110,36 @@
       <hr>
 
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>What is your floor constructed from?</p>
-        </div>
+        <p>What is your floor constructed from?</p>
       </div>
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>
-            {% if slab_on_ground is defined %} Concrete slab on ground<br/> {% endif %}
-            {% if slab_off_ground is defined %} Concrete slab off ground<br/> {% endif %}
-            {% if timber_boards is defined %} Timber boards<br/> {% endif %}
-            {% if floor_construction_other is defined %} {{ floor_construction_other }}<br/> {% endif %}
-          </p>
-        </div>
+        <p>
+          {% if slab_on_ground is defined %} Concrete slab on ground<br/> {% endif %}
+          {% if slab_off_ground is defined %} Concrete slab off ground<br/> {% endif %}
+          {% if timber_boards is defined %} Timber boards<br/> {% endif %}
+          {% if floor_construction_other is defined %} {{ floor_construction_other }}<br/> {% endif %}
+        </p>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>What kind of underfloor insulation do you have?</p>
-        </div>
+        <p>What kind of underfloor insulation do you have?</p>
       </div>
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>
-            {% if floor_batts is defined %} Batts<br/> {% endif %}
-            {% if floor_infill is defined %} Foam infill<br/> {% endif %}
-            {% if floor_foil is defined %} Reflective foil<br/> {% endif %}
-            {% if no_floor_ins is defined %} No insulation<br/> {% endif %}
+        <p>
+          {% if floor_batts is defined %} Batts<br/> {% endif %}
+          {% if floor_infill is defined %} Foam infill<br/> {% endif %}
+          {% if floor_foil is defined %} Reflective foil<br/> {% endif %}
+          {% if no_floor_ins is defined %} No insulation<br/> {% endif %}
             {% if floor_insulation_other is defined %} {{ floor_insulation_other }}<br/> {% endif %}
-          </p>
-        </div>
+        </p>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>Floor coverings</p>
-        </div>
+        <p>Floor coverings</p>
       </div>
       <div class="large-6 medium-6 columns">
         <div class="callout panel">
@@ -247,7 +218,112 @@
       </div>
     </div>
 
+    {### Heating and cooling ###}
+
+    <div class="row">
+
+      <hr>
+
+      <div class="large-6 medium-6 columns">
+        <p>How do you heat your home?</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if heating_gas_ducted is defined %} Gas ducted<br/> {% endif %}
+          {% if heating_gas_room is defined %} Gas in room<br/> {% endif %}
+          {% if heating_electric_ducted is defined %} Electric ducted<br/> {% endif %}
+          {% if heating_electric_wall_radiator is defined %} Electric on wall radiator<br/> {% endif %}
+          {% if heating_electric_portable_radiator is defined %} Electric portable radiator<br/> {% endif %}
+          {% if heating_electric_oil_bar_header is defined %} Electric oil/bar heater<br/> {% endif %}
+          {% if heating_hydronic_heating_wall is defined %} Hydronic heating on wall<br/> {% endif %}
+          {% if heating_hydronic_heating_slab is defined %} Hydronic heating in slab<br/> {% endif %}
+          {% if heating_reverse_cycle_pre_2000 is defined %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
+          {% if heating_reverse_cycle_post_2000 is defined %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
+          {% if heating_wood_fired is defined %} Wood-fired heating {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>How do you cool your home?</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if cooling_reverse_cycle_pre_2000 is defined %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
+          {% if cooling_reverse_cycle_post_2000 is defined %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
+          {% if cooling_ceiling_fan is defined %} Ceiling fan<br/> {% endif %}
+          {% if cooling_ducted_evaporative_cooling is defined %} Ducted evaporated cooling<br/> {% endif %}
+          {% if cooling_room_evaporative_cooling is defined %} In room evaporated cooling {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>How do you cook?</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if cooking_gas_cooktop is defined %} Gas cooktop<br/> {% endif %}
+          {% if cooking_electric_ceramic_cooktop is defined %} Electric ceramic<br/> {% endif %}
+          {% if cooking_induction_cooktop is defined %} Induction cooktop<br/> {% endif %}
+          {% if cooking_electric_oven is defined %} Electric oven<br/> {% endif %}
+          {% if cooking_gas_oven is defined %} Gas oven {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>How do you heat your water?</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>{% if hot_water is defined %} {{ hot_water }} {% endif %} </p>
+      </div>
+    </div>
+
+    {### Energy freedom ###}
+
+    <div class="row">
+
+      <hr>
+
+      <div class="large-4 medium-4 columns">
+        <p>How close are you to producing more electricity than you use and achieving Energy Freedom?</p>
+      </div>
+      <div class="large-8 medium-8 columns">
+        <p>{% if energy_production is defined %} {{ energy_production }} {% endif %} </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>What actions have you already taken?</p>
+      </div>
+    </div>
+    <div class="large-6 medium-6 columns">
+      <p>
+        {% if action_display is defined %} In-home display connected to your smart meter<br/> {% endif %}
+        {% if action_led is defined %} Replaced Halogen downlights with LEDs<br/> {% endif %}
+        {% if action_draft_proofing is defined %} Draught-proofing measures<br/> {% endif %}
+        {% if action_reverse_cycle is defined %} High efficiency reverse cycle air conditioner/s<br/> {% endif %}
+        {% if action_efficiency_appliances is defined %} High efficiency appliances<br/> {% endif %}
+        {% if action_double_glazing is defined %} Retrofitted double glazing for your windows<br/> {% endif %}
+        {% if action_wall_insulation is defined %} Retrofitted wall insulation<br/> {% endif %}
+        {% if action_solar is defined %} Installed rooftop solar – {{ solar_amount }}{% endif %}
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <p>Comments, other ideas, etc.</p>
+        {% if volunteer_signup_content is defined %} {{ volunteer_signup_content }} {% endif %}
+      </div>
+    </div>
+
     {### End form ###}
+
     <div class="row">
 
       <hr>

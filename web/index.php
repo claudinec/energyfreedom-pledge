@@ -120,6 +120,7 @@ $app->get('/pledge', function () use ($app, $client) {
             'title' => 'Energy Freedom Pledge Viewer',
             'name' => $response['result']['person']['full_name'],
             'house_type' => $response['result']['person']['house_type'],
+            'house_type_other' => $response['result']['person']['house_type_other'],
         )
     );
 });

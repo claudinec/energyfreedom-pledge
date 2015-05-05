@@ -50,12 +50,12 @@
       <div class="large-6 medium-6 columns">
         <div class="callout panel">
           <p>
-              {% if brick_veneer is defined %} Brick veneer<br/> {% endif %}
-              {% if double_brick is defined %} Double brick<br/> {% endif %}
-              {% if weatherboard is defined %} Weatherboard<br/> {% endif %}
-              {% if al_cladding is defined %} Aluminium cladding<br/> {% endif %}
-              {% if panels is defined %} Structurally integrated panels<br/> {% endif %}
-              {% if wall_construction_other is defined %} {{ wall_construction_other }}<br/> {% endif %}
+            {% if brick_veneer is defined %} Brick veneer<br/> {% endif %}
+            {% if double_brick is defined %} Double brick<br/> {% endif %}
+            {% if weatherboard is defined %} Weatherboard<br/> {% endif %}
+            {% if al_cladding is defined %} Aluminium cladding<br/> {% endif %}
+            {% if panels is defined %} Structurally integrated panels<br/> {% endif %}
+            {% if wall_construction_other is defined %} {{ wall_construction_other }}<br/> {% endif %}
           </p>
         </div>
       </div>
@@ -70,11 +70,11 @@
       <div class="large-6 medium-6 columns">
         <div class="callout panel">
           <p>
-              {% if wall_batts is defined %} Batts<br/> {% endif %}
-              {% if wall_infill is defined %} Foam infill<br/> {% endif %}
-              {% if wall_foil is defined %} Reflective foil<br/> {% endif %}
-              {% if no_ins is defined %} No insulation<br/> {% endif %}
-              {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
+            {% if wall_batts is defined %} Batts<br/> {% endif %}
+            {% if wall_infill is defined %} Foam infill<br/> {% endif %}
+            {% if wall_foil is defined %} Reflective foil<br/> {% endif %}
+            {% if no_ins is defined %} No insulation<br/> {% endif %}
+            {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
           </p>
         </div>
       </div>
@@ -178,6 +178,72 @@
             {% if rooms_timber_floors is defined %} {{ rooms_timber_floors }} % rooms with timber floors {% endif %}
           </p>
         </div>
+      </div>
+    </div>
+
+    {### Windows ###}
+
+    <div class="row">
+
+      <hr>
+
+      <div class="large-12 columns">
+        <p>What type of windows do you have?</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>Glazing</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if windows_glazing is defined %} {{ windows_glazing }} {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>Frame</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if window_frame is defined %} {{ window_frame }} <br/> {% endif %}
+          {% if window_frame_other is defined %} {{ window_frame_other }} {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <p>What type of window coverings do you have?</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>Internal</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if window_coverings_internal is defined %} {{ window_coverings_internal }} <br/> {% endif %}
+          {% if other_internal is defined %} {{ other_internal }} <br/> {% endif %}
+          {% if window_coverings_internal_pelmets is defined %} {{ window_coverings_internal_pelmets }} <br/> {% endif %}
+          {% if no_pelmets is defined %} {{ no_pelmets }} {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <p>External</p>
+      </div>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if window_coverings_external is defined %} {{ window_coverings_external }} <br/> {% endif %}
+          {% if other_external is defined %} {{ other_external }} {% endif %}
+        </p>
       </div>
     </div>
 

@@ -45,11 +45,11 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if brick_veneer is defined %} Brick veneer<br/> {% endif %}
-          {% if double_brick is defined %} Double brick<br/> {% endif %}
-          {% if weatherboard is defined %} Weatherboard<br/> {% endif %}
-          {% if al_cladding is defined %} Aluminium cladding<br/> {% endif %}
-          {% if panels is defined %} Structurally integrated panels<br/> {% endif %}
+          {% if brick_veneer == true %} Brick veneer<br/> {% endif %}
+          {% if double_brick == true %} Double brick<br/> {% endif %}
+          {% if weatherboard == true %} Weatherboard<br/> {% endif %}
+          {% if al_cladding == true %} Aluminium cladding<br/> {% endif %}
+          {% if panels == true %} Structurally integrated panels<br/> {% endif %}
           {% if wall_construction_other is defined %} {{ wall_construction_other }}<br/> {% endif %}
         </p>
       </div>
@@ -61,10 +61,11 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if wall_batts is defined %} Batts<br/> {% endif %}
-          {% if wall_infill is defined %} Foam infill<br/> {% endif %}
-          {% if wall_foil is defined %} Reflective foil<br/> {% endif %}
-          {% if no_ins is defined %} No insulation<br/> {% endif %}            {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
+          {% if wall_batts == true %} Batts<br/> {% endif %}
+          {% if wall_infill == true %} Foam infill<br/> {% endif %}
+          {% if wall_foil == true %} Reflective foil<br/> {% endif %}
+          {% if no_ins == true %} No insulation<br/> {% endif %}
+          {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
         </p>
       </div>
     </div>
@@ -94,10 +95,10 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if roof_batts is defined %} Batts<br/> {% endif %}
-          {% if roof_infill is defined %} Foam infill<br/> {% endif %}
-          {% if roof_foil is defined %} Reflective foil<br/> {% endif %}
-          {% if no_roof_ins is defined %} No insulation<br/> {% endif %}
+          {% if roof_batts == true %} Batts<br/> {% endif %}
+          {% if roof_infill == true %} Foam infill<br/> {% endif %}
+          {% if roof_foil == true %} Reflective foil<br/> {% endif %}
+          {% if no_roof_ins == true %} No insulation<br/> {% endif %}
           {% if roof_insulation_other is defined %} {{ roof_insulation_other }}<br/> {% endif %}
         </p>
       </div>
@@ -114,9 +115,9 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if slab_on_ground is defined %} Concrete slab on ground<br/> {% endif %}
-          {% if slab_off_ground is defined %} Concrete slab off ground<br/> {% endif %}
-          {% if timber_boards is defined %} Timber boards<br/> {% endif %}
+          {% if slab_on_ground == true %} Concrete slab on ground<br/> {% endif %}
+          {% if slab_off_ground == true %} Concrete slab off ground<br/> {% endif %}
+          {% if timber_boards == true %} Timber boards<br/> {% endif %}
           {% if floor_construction_other is defined %} {{ floor_construction_other }}<br/> {% endif %}
         </p>
       </div>
@@ -128,10 +129,10 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if floor_batts is defined %} Batts<br/> {% endif %}
-          {% if floor_infill is defined %} Foam infill<br/> {% endif %}
-          {% if floor_foil is defined %} Reflective foil<br/> {% endif %}
-          {% if no_floor_ins is defined %} No insulation<br/> {% endif %}
+          {% if floor_batts == true %} Batts<br/> {% endif %}
+          {% if floor_infill == true %} Foam infill<br/> {% endif %}
+          {% if floor_foil == true %} Reflective foil<br/> {% endif %}
+          {% if no_floor_ins == true %} No insulation<br/> {% endif %}
             {% if floor_insulation_other is defined %} {{ floor_insulation_other }}<br/> {% endif %}
         </p>
       </div>
@@ -144,9 +145,9 @@
       <div class="large-6 medium-6 columns">
         <div class="callout panel">
           <p>
-            {% if rooms_carpeted is defined %} {{ rooms_carpeted }} % rooms carpeted<br/> {% endif %}
-            {% if rooms_tiled is defined %} {{ rooms_tiled }} % rooms tiled<br/> {% endif %}
-            {% if rooms_timber_floors is defined %} {{ rooms_timber_floors }} % rooms with timber floors {% endif %}
+            {% if rooms_carpeted is defined %} {{ rooms_carpeted }} rooms carpeted<br/> {% endif %}
+            {% if rooms_tiled is defined %} {{ rooms_tiled }} rooms tiled<br/> {% endif %}
+            {% if rooms_timber_floors is defined %} {{ rooms_timber_floors }} rooms with timber floors {% endif %}
           </p>
         </div>
       </div>
@@ -200,8 +201,8 @@
         <p>
           {% if window_coverings_internal is defined %} {{ window_coverings_internal }} <br/> {% endif %}
           {% if other_internal is defined %} {{ other_internal }} <br/> {% endif %}
-          {% if window_coverings_internal_pelmets is defined %} {{ window_coverings_internal_pelmets }} <br/> {% endif %}
-          {% if no_pelmets is defined %} {{ no_pelmets }} {% endif %}
+          {% if window_coverings_internal_pelmets == true %} {{ window_coverings_internal_pelmets }} <br/> {% endif %}
+          {% if no_pelmets == true %} {{ no_pelmets }} {% endif %}
         </p>
       </div>
     </div>
@@ -229,17 +230,17 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if heating_gas_ducted is defined %} Gas ducted<br/> {% endif %}
-          {% if heating_gas_room is defined %} Gas in room<br/> {% endif %}
-          {% if heating_electric_ducted is defined %} Electric ducted<br/> {% endif %}
-          {% if heating_electric_wall_radiator is defined %} Electric on wall radiator<br/> {% endif %}
-          {% if heating_electric_portable_radiator is defined %} Electric portable radiator<br/> {% endif %}
-          {% if heating_electric_oil_bar_header is defined %} Electric oil/bar heater<br/> {% endif %}
-          {% if heating_hydronic_heating_wall is defined %} Hydronic heating on wall<br/> {% endif %}
-          {% if heating_hydronic_heating_slab is defined %} Hydronic heating in slab<br/> {% endif %}
-          {% if heating_reverse_cycle_pre_2000 is defined %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
-          {% if heating_reverse_cycle_post_2000 is defined %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
-          {% if heating_wood_fired is defined %} Wood-fired heating {% endif %}
+          {% if heating_gas_ducted == true %} Gas ducted<br/> {% endif %}
+          {% if heating_gas_room == true %} Gas in room<br/> {% endif %}
+          {% if heating_electric_ducted == true %} Electric ducted<br/> {% endif %}
+          {% if heating_electric_wall_radiator == true %} Electric on wall radiator<br/> {% endif %}
+          {% if heating_electric_portable_radiator == true %} Electric portable radiator<br/> {% endif %}
+          {% if heating_electric_oil_bar_header == true %} Electric oil/bar heater<br/> {% endif %}
+          {% if heating_hydronic_heating_wall == true %} Hydronic heating on wall<br/> {% endif %}
+          {% if heating_hydronic_heating_slab == true %} Hydronic heating in slab<br/> {% endif %}
+          {% if heating_reverse_cycle_pre_2000 == true %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
+          {% if heating_reverse_cycle_post_2000 == true %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
+          {% if heating_wood_fired == true %} Wood-fired heating {% endif %}
         </p>
       </div>
     </div>
@@ -250,11 +251,11 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if cooling_reverse_cycle_pre_2000 is defined %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
-          {% if cooling_reverse_cycle_post_2000 is defined %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
-          {% if cooling_ceiling_fan is defined %} Ceiling fan<br/> {% endif %}
-          {% if cooling_ducted_evaporative_cooling is defined %} Ducted evaporated cooling<br/> {% endif %}
-          {% if cooling_room_evaporative_cooling is defined %} In room evaporated cooling {% endif %}
+          {% if cooling_reverse_cycle_pre_2000 == true %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
+          {% if cooling_reverse_cycle_post_2000 == true %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
+          {% if cooling_ceiling_fan == true %} Ceiling fan<br/> {% endif %}
+          {% if cooling_ducted_evaporative_cooling == true %} Ducted evaporated cooling<br/> {% endif %}
+          {% if cooling_room_evaporative_cooling == true %} In room evaporated cooling {% endif %}
         </p>
       </div>
     </div>
@@ -265,11 +266,11 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if cooking_gas_cooktop is defined %} Gas cooktop<br/> {% endif %}
-          {% if cooking_electric_ceramic_cooktop is defined %} Electric ceramic<br/> {% endif %}
-          {% if cooking_induction_cooktop is defined %} Induction cooktop<br/> {% endif %}
-          {% if cooking_electric_oven is defined %} Electric oven<br/> {% endif %}
-          {% if cooking_gas_oven is defined %} Gas oven {% endif %}
+          {% if cooking_gas_cooktop == true %} Gas cooktop<br/> {% endif %}
+          {% if cooking_electric_ceramic_cooktop == true %} Electric ceramic<br/> {% endif %}
+          {% if cooking_induction_cooktop == true %} Induction cooktop<br/> {% endif %}
+          {% if cooking_electric_oven == true %} Electric oven<br/> {% endif %}
+          {% if cooking_gas_oven == true %} Gas oven {% endif %}
         </p>
       </div>
     </div>
@@ -301,18 +302,18 @@
       <div class="large-6 medium-6 columns">
         <p>What actions have you already taken?</p>
       </div>
-    </div>
-    <div class="large-6 medium-6 columns">
-      <p>
-        {% if action_display is defined %} In-home display connected to your smart meter<br/> {% endif %}
-        {% if action_led is defined %} Replaced Halogen downlights with LEDs<br/> {% endif %}
-        {% if action_draft_proofing is defined %} Draught-proofing measures<br/> {% endif %}
-        {% if action_reverse_cycle is defined %} High efficiency reverse cycle air conditioner/s<br/> {% endif %}
-        {% if action_efficiency_appliances is defined %} High efficiency appliances<br/> {% endif %}
-        {% if action_double_glazing is defined %} Retrofitted double glazing for your windows<br/> {% endif %}
-        {% if action_wall_insulation is defined %} Retrofitted wall insulation<br/> {% endif %}
-        {% if action_solar is defined %} Installed rooftop solar – {{ solar_amount }}{% endif %}
-      </p>
+      <div class="large-6 medium-6 columns">
+        <p>
+          {% if action_display == true %} In-home display connected to your smart meter<br/> {% endif %}
+          {% if action_led == true %} Replaced Halogen downlights with LEDs<br/> {% endif %}
+          {% if action_draft_proofing == true %} Draught-proofing measures<br/> {% endif %}
+          {% if action_reverse_cycle == true %} High efficiency reverse cycle air conditioner/s<br/> {% endif %}
+          {% if action_efficiency_appliances == true %} High efficiency appliances<br/> {% endif %}
+          {% if action_double_glazing == true %} Retrofitted double glazing for your windows<br/> {% endif %}
+          {% if action_wall_insulation == true %} Retrofitted wall insulation<br/> {% endif %}
+          {% if action_solar == true %} Installed rooftop solar – {{ solar_amount }} {% endif %}
+        </p>
+      </div>
     </div>
 
     <div class="row">

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/foundation.min.css" />
     <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
@@ -12,8 +12,12 @@
     <div class="row">
       <div class="large-12 columns">
         <h1>{{ title }}</h1>
+      </div>
+    </div>
 
-        {### User ###}
+    {### User ###}
+    <div class="row">
+      <div class="large-6 medium-6 columns">
         <div class="panel">
           <h4>Welcome, {{ name }}.</h4>
 
@@ -145,13 +149,11 @@
         <p>Floor coverings</p>
       </div>
       <div class="large-6 medium-6 columns">
-        <div class="callout panel">
-          <p>
-            {% if rooms_carpeted is defined %} {{ rooms_carpeted }} rooms carpeted<br/> {% endif %}
-            {% if rooms_tiled is defined %} {{ rooms_tiled }} rooms tiled<br/> {% endif %}
-            {% if rooms_timber_floors is defined %} {{ rooms_timber_floors }} rooms with timber floors {% endif %}
-          </p>
-        </div>
+        <p>
+          {% if rooms_carpeted is defined %} {{ rooms_carpeted }} rooms carpeted<br/> {% endif %}
+          {% if rooms_tiled is defined %} {{ rooms_tiled }} rooms tiled<br/> {% endif %}
+          {% if rooms_timber_floors is defined %} {{ rooms_timber_floors }} rooms with timber floors {% endif %}
+        </p>
       </div>
     </div>
 
@@ -329,7 +331,7 @@
 
     <div class="row">
       <div class="large-4 medium-4 columns">
-        <p><a href="#" class="small button">Submit</a></p>
+        <p><a href="#" class="small radius button">Submit</a></p>
       </div>
     </div>
 

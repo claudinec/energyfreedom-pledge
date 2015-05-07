@@ -187,24 +187,30 @@
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>Glazing</p>
-      </div>
-      <div class="large-6 medium-6 columns">
-        <p>
+        <label>Glazing</label>
+        <select>
           {% if windows_glazing is defined %} {{ windows_glazing }} {% endif %}
-        </p>
+          <option {% if windows_glazing == "Single glazed" %} selected="true" {% endif %}>Single glazed</option>
+          <option {% if windows_glazing == "Single glazed with reflective coating" %} selected="true" {% endif %}>Single glazed with reflective coating</option>
+          <option {% if windows_glazing == "Double glazed" %} selected="true" {% endif %}>Double glazed</option>
+          <option {% if windows_glazing == "Triple Glazed" %} selected="true" {% endif %}>Triple Glazed</option>
+        </select>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>Frame</p>
+        <label>Frame</label>
+        <select>
+          <option {% if window_frame == "Timber" %} selected="true" {% endif %}>Timber</option>
+          <option {% if window_frame == "Aluminium" %} selected="true" {% endif %}>Aluminium</option>
+          <option {% if window_frame == "Plastic (uPVC)" %} selected="true" {% endif %}>Plastic (uPVC)</option>
+        </select>
       </div>
+
       <div class="large-6 medium-6 columns">
-        <p>
-          {% if window_frame is defined %} {{ window_frame }} <br/> {% endif %}
-          {% if window_frame_other is defined %} {{ window_frame_other }} {% endif %}
-        </p>
+        <label>Other</label>
+        <input {% if window_frame_other is defined %} value="{{ window_frame_other }}" {% endif %} >
       </div>
     </div>
 
@@ -216,27 +222,44 @@
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>Internal</p>
+        <label>Internal</label>
+        <select>
+          <option {% if window_coverings_internal == "None" %} selected="true" {% endif %}>None</option>
+          <option {% if window_coverings_internal == "Venetian blinds" %} selected="true" {% endif %}>Venetian blinds</option>
+          <option {% if window_coverings_internal == "Block-out blinds" %} selected="true" {% endif %}>Block-out blinds</option>
+          <option {% if window_coverings_internal == "Light fabric blinds" %} selected="true" {% endif %}>Light fabric blinds</option>
+          <option {% if window_coverings_internal == "Heavy fabric blinds" %} selected="true" {% endif %}>Heavy fabric blinds</option>
+        </select>
       </div>
+
       <div class="large-6 medium-6 columns">
-        <p>
-          {% if window_coverings_internal is defined %} {{ window_coverings_internal }} <br/> {% endif %}
-          {% if other_internal is defined %} {{ other_internal }} <br/> {% endif %}
-          {% if window_coverings_internal_pelmets == true %} {{ window_coverings_internal_pelmets }} <br/> {% endif %}
-          {% if no_pelmets == true %} {{ no_pelmets }} {% endif %}
-        </p>
+        <label>Other</label>
+        <input {% if other_internal is defined %} value="{{ other_internal }}" {% endif %} >
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>External</p>
+        <label>Do you have pelmets?</label>
+        <select>
+          <option {% if window_coverings_internal_pelmets == true %} selected="true" {% endif %} >Yes</option>
+          <option {% if no_pelmets == true %} selected="true" {% endif %}>No</option>
+        </select>
       </div>
+    </div>
+
+    <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>
-          {% if window_coverings_external is defined %} {{ window_coverings_external }} <br/> {% endif %}
-          {% if other_external is defined %} {{ other_external }} {% endif %}
-        </p>
+        <label>External</label>
+        <select>
+          <option {% if window_coverings_external == "Awnings" %} selected="true" {% endif %}>Awnings</option>
+          <option {% if window_coverings_external == "Natural shading" %} selected="true" {% endif %}>Natural shading</option>
+        </select>
+      </div>
+
+      <div class="large-6 medium-6 columns">
+        <label>Other</label>
+        <input {% if other_external is defined %} value="{{ other_external }}" {% endif %} >
       </div>
     </div>
 
@@ -251,16 +274,16 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if heating_gas_ducted == true %} Gas ducted<br/> {% endif %}
-          {% if heating_gas_room == true %} Gas in room<br/> {% endif %}
-          {% if heating_electric_ducted == true %} Electric ducted<br/> {% endif %}
-          {% if heating_electric_wall_radiator == true %} Electric on wall radiator<br/> {% endif %}
-          {% if heating_electric_portable_radiator == true %} Electric portable radiator<br/> {% endif %}
-          {% if heating_electric_oil_bar_header == true %} Electric oil/bar heater<br/> {% endif %}
-          {% if heating_hydronic_heating_wall == true %} Hydronic heating on wall<br/> {% endif %}
-          {% if heating_hydronic_heating_slab == true %} Hydronic heating in slab<br/> {% endif %}
-          {% if heating_reverse_cycle_pre_2000 == true %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
-          {% if heating_reverse_cycle_post_2000 == true %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
+<option {% if heating_gas_ducted == true %} selected="true" {% endif %} >Gas ducted</option>
+<option {% if heating_gas_room == true %} selected="true" {% endif %} >Gas in room</option>
+<option {% if heating_electric_ducted == true %} selected="true" {% endif %} >Electric ducted</option>
+<option {% if heating_electric_wall_radiator == true %} selected="true" {% endif %} >Electric on wall radiator</option>
+<option {% if heating_electric_portable_radiator == true %} selected="true" {% endif %} >Electric portable radiator</option>
+<option {% if heating_electric_oil_bar_header == true %} selected="true" {% endif %} >Electric oil/bar heater</option>
+<option {% if heating_hydronic_heating_wall == true %} selected="true" {% endif %} >Hydronic heating on wall</option>
+<option {% if heating_hydronic_heating_slab == true %} selected="true" {% endif %} >Hydronic heating in slab</option>
+<option {% if heating_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
+<option {% if heating_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
           {% if heating_wood_fired == true %} Wood-fired heating {% endif %}
         </p>
       </div>
@@ -272,10 +295,10 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if cooling_reverse_cycle_pre_2000 == true %} Reverse cycle air conditioner installed pre 2000<br/> {% endif %}
-          {% if cooling_reverse_cycle_post_2000 == true %} Reverse cycle air conditioner installed post 2000<br/> {% endif %}
-          {% if cooling_ceiling_fan == true %} Ceiling fan<br/> {% endif %}
-          {% if cooling_ducted_evaporative_cooling == true %} Ducted evaporated cooling<br/> {% endif %}
+<option {% if cooling_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
+<option {% if cooling_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
+<option {% if cooling_ceiling_fan == true %} selected="true" {% endif %} >Ceiling fan</option>
+<option {% if cooling_ducted_evaporative_cooling == true %} selected="true" {% endif %} >Ducted evaporated cooling</option>
           {% if cooling_room_evaporative_cooling == true %} In room evaporated cooling {% endif %}
         </p>
       </div>
@@ -287,10 +310,10 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if cooking_gas_cooktop == true %} Gas cooktop<br/> {% endif %}
-          {% if cooking_electric_ceramic_cooktop == true %} Electric ceramic<br/> {% endif %}
-          {% if cooking_induction_cooktop == true %} Induction cooktop<br/> {% endif %}
-          {% if cooking_electric_oven == true %} Electric oven<br/> {% endif %}
+<option {% if cooking_gas_cooktop == true %} selected="true" {% endif %} >Gas cooktop</option>
+<option {% if cooking_electric_ceramic_cooktop == true %} selected="true" {% endif %} >Electric ceramic</option>
+<option {% if cooking_induction_cooktop == true %} selected="true" {% endif %} >Induction cooktop</option>
+<option {% if cooking_electric_oven == true %} selected="true" {% endif %} >Electric oven</option>
           {% if cooking_gas_oven == true %} Gas oven {% endif %}
         </p>
       </div>
@@ -325,13 +348,13 @@
       </div>
       <div class="large-6 medium-6 columns">
         <p>
-          {% if action_display == true %} In-home display connected to your smart meter<br/> {% endif %}
-          {% if action_led == true %} Replaced Halogen downlights with LEDs<br/> {% endif %}
-          {% if action_draft_proofing == true %} Draught-proofing measures<br/> {% endif %}
-          {% if action_reverse_cycle == true %} High efficiency reverse cycle air conditioner/s<br/> {% endif %}
-          {% if action_efficiency_appliances == true %} High efficiency appliances<br/> {% endif %}
-          {% if action_double_glazing == true %} Retrofitted double glazing for your windows<br/> {% endif %}
-          {% if action_wall_insulation == true %} Retrofitted wall insulation<br/> {% endif %}
+<option {% if action_display == true %} selected="true" {% endif %} >In-home display connected to your smart meter</option>
+<option {% if action_led == true %} selected="true" {% endif %} >Replaced Halogen downlights with LEDs</option>
+<option {% if action_draft_proofing == true %} selected="true" {% endif %} >Draught-proofing measures</option>
+<option {% if action_reverse_cycle == true %} selected="true" {% endif %} >High efficiency reverse cycle air conditioner/s</option>
+<option {% if action_efficiency_appliances == true %} selected="true" {% endif %} >High efficiency appliances</option>
+<option {% if action_double_glazing == true %} selected="true" {% endif %} >Retrofitted double glazing for your windows</option>
+<option {% if action_wall_insulation == true %} selected="true" {% endif %} >Retrofitted wall insulation</option>
           {% if action_solar == true %} Installed rooftop solar – {{ solar_amount }} {% endif %}
         </p>
       </div>

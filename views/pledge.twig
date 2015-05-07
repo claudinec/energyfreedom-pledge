@@ -28,51 +28,130 @@
 
     {### BEGIN FORM ###}
 
-    {### House ###}
+    {### House and walls ###}
 
-    <div>
+    <div class="row">
+      <div class="large-6 medium-6 columns">
+        <label>What type of house do you have?</label>
+        <select>
+          {% if house_type == "Stand alone home" %}
+            <option selected="true">Stand alone home</option>
+          {% else %}
+            <option>Stand alone home</option>
+          {% endif %}
+          {% if house_type == "Semi-detached home" %}
+            <option selected="true">Semi-detached home</option>
+          {% else %}
+            <option>Semi-detached home</option>
+          {% endif %}
+          {% if house_type == "Town house" %}
+            <option selected="true">Town house</option>
+          {% else %}
+            <option>Town house</option>
+          {% endif %}
+          {% if house_type == "Apartment" %}
+            <option selected="true">Apartment</option>
+          {% else %}
+            <option>Apartment</option>
+          {% endif %}
+          {% if house_type == "Rural" %}
+            <option selected="true">Rural</option>
+          {% else %}
+            <option>Rural</option>
+          {% endif %}
+        </select>
+      </div>
+
       <div>
-        <div class="row">
-          <div class="large-6 medium-6 columns">
-            <p>What type of house do you have?</p>
-          </div>
-          <div class="large-6 medium-6 columns">
-            <p>{{ house_type }}
-                {% if house_type_other is defined %} {{ house_type_other }} {% endif %}
-            </p>
-          </div>
+        <div class="large-6 medium-6 columns">
+          <label>Other</label>
+            {% if house_type_other is defined %}
+              <input value="{{ house_type_other }}">
+            {% else %}
+              <input>
+            {% endif %}
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>What are your walls constructed from?</p>
+        <label>What are your walls constructed from?</label>
+        <select multiple="true">
+          {% if brick_veneer == true %}
+            <option selected="true">Brick veneer</option>
+          {% else %}
+            <option>Brick veneer</option>
+          {% endif %}
+          {% if double_brick == true %}
+            <option selected="true">Double brick</option>
+          {% else %}
+            <option>Double brick</option>
+          {% endif %}
+          {% if weatherboard == true %}
+            <option selected="true">Weatherboard</option>
+          {% else %}
+            <option>Weatherboard</option>
+          {% endif %}
+          {% if al_cladding == true %}
+            <option selected="true">Aluminium cladding</option>
+          {% else %}
+            <option>Aluminium cladding</option>
+          {% endif %}
+          {% if panels == true %}
+            <option selected="true">Structurally integrated panels</option>
+          {% else %}
+            <option>Structurally integrated panels</option>
+          {% endif %}
+        </select>
       </div>
-      <div class="large-6 medium-6 columns">
-        <p>
-          {% if brick_veneer == true %} Brick veneer<br/> {% endif %}
-          {% if double_brick == true %} Double brick<br/> {% endif %}
-          {% if weatherboard == true %} Weatherboard<br/> {% endif %}
-          {% if al_cladding == true %} Aluminium cladding<br/> {% endif %}
-          {% if panels == true %} Structurally integrated panels<br/> {% endif %}
-          {% if wall_construction_other is defined %} {{ wall_construction_other }}<br/> {% endif %}
-        </p>
+
+      <div>
+        <div class="large-6 medium-6 columns">
+          <label>Other</label>
+            {% if wall_construction_other is defined %}
+              <input value="{{ wall_construction_other }}">
+            {% else %}
+              <input>
+            {% endif %}
+        </div>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>What kind of insulation do you have in your walls?</p>
+        <label>What kind of insulation do you have in your walls?</label>
+        <select multiple="true">
+          {% if wall_batts == true %}
+            <option selected="true">Batts</option>
+          {% else %}
+            <option>Batts</option>
+          {% endif %}
+          {% if wall_infill == true %}
+            <option selected="true">Foam infill</option>
+          {% else %}
+            <option>Foam infill</option>
+          {% endif %}
+          {% if wall_foil == true %}
+            <option selected="true">Reflective foil</option>
+          {% else %}
+            <option>Reflective foil</option>
+          {% endif %}
+          {% if no_ins == true %}
+            <option selected="true">No insulation</option>
+          {% else %}
+            <option>No insulation</option>
+          {% endif %}
+        </select>
       </div>
+
       <div class="large-6 medium-6 columns">
-        <p>
-          {% if wall_batts == true %} Batts<br/> {% endif %}
-          {% if wall_infill == true %} Foam infill<br/> {% endif %}
-          {% if wall_foil == true %} Reflective foil<br/> {% endif %}
-          {% if no_ins == true %} No insulation<br/> {% endif %}
-          {% if wall_insulation_other is defined %} {{ wall_insulation_other }}<br/> {% endif %}
-        </p>
+        <label>Other</label>
+          {% if wall_insulation_other is defined %}
+            <input value="{{ wall_insulation_other }}">
+          {% else %}
+            <input>
+          {% endif %}
       </div>
     </div>
 

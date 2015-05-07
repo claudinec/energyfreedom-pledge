@@ -333,7 +333,7 @@
 
       <hr>
 
-      <div class="large-12 columns">
+      <div class="large-8 medium-8 columns">
         <label>How close are you to producing more electricity than you use and achieving Energy Freedom?</label>
         <select>
           <option {% if energy_production=="Thinking about generating a portion of your electricity needs" %} selected="true" {% endif %}>Thinking about generating a portion of your electricity needs</option>
@@ -346,7 +346,7 @@
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
+      <div class="large-8 medium-8 columns">
         <label>What actions have you already taken?</label>
         <select multiple="true">
           <option {% if action_display == true %} selected="true" {% endif %} >In-home display connected to your smart meter</option>
@@ -361,8 +361,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="large-12 columns">
-        <label>Installed rooftop solar</label>
+      <div class="large-4 medium-4 columns">
+        <label>Installed rooftop solar &ndash; How much?</label>
         <select>
           <option {% if action_solar == "1kw" %} selected="true" {% endif %} >1kw</option>
           <option {% if action_solar == "1.5kw" %} selected="true" {% endif %} >1.5kw</option>
@@ -381,7 +381,7 @@
     <div class="row">
       <div class="large-12 columns">
         <label>Comments, other ideas, etc.</label>
-        <input {% if volunteer_signup_content is defined %} value="{{ volunteer_signup_content }}" {% endif %} >
+        <textarea> {% if volunteer_signup_content is defined %} {{ volunteer_signup_content }} {% endif %} </textarea>
       </div>
     </div>
 

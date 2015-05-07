@@ -333,36 +333,55 @@
 
       <hr>
 
-      <div class="large-4 medium-4 columns">
-        <p>How close are you to producing more electricity than you use and achieving Energy Freedom?</p>
-      </div>
-      <div class="large-8 medium-8 columns">
-        <p>{% if energy_production is defined %} {{ energy_production }} {% endif %} </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-6 medium-6 columns">
-        <p>What actions have you already taken?</p>
-      </div>
-      <div class="large-6 medium-6 columns">
-        <p>
-<option {% if action_display == true %} selected="true" {% endif %} >In-home display connected to your smart meter</option>
-<option {% if action_led == true %} selected="true" {% endif %} >Replaced Halogen downlights with LEDs</option>
-<option {% if action_draft_proofing == true %} selected="true" {% endif %} >Draught-proofing measures</option>
-<option {% if action_reverse_cycle == true %} selected="true" {% endif %} >High efficiency reverse cycle air conditioner/s</option>
-<option {% if action_efficiency_appliances == true %} selected="true" {% endif %} >High efficiency appliances</option>
-<option {% if action_double_glazing == true %} selected="true" {% endif %} >Retrofitted double glazing for your windows</option>
-<option {% if action_wall_insulation == true %} selected="true" {% endif %} >Retrofitted wall insulation</option>
-          {% if action_solar == true %} Installed rooftop solar – {{ solar_amount }} {% endif %}
-        </p>
+      <div class="large-12 columns">
+        <label>How close are you to producing more electricity than you use and achieving Energy Freedom?</label>
+        <select>
+          <option {% if energy_production=="Thinking about generating a portion of your electricity needs" %} selected="true" {% endif %}>Thinking about generating a portion of your electricity needs</option>
+          <option {% if energy_production=="Currently installing ways to produce your electricity needs" %} selected="true" {% endif %}>Currently installing ways to produce your electricity needs</option>
+          <option {% if energy_production=="Already producing some of your own electricity" %} selected="true" {% endif %}>Already producing some of your own electricity</option>
+          <option {% if energy_production=="Producing all of your own electricity" %} selected="true" {% endif %}>Producing all of your own electricity</option>
+          <option {% if energy_production=="Producing an excess of electricity" %} selected="true" {% endif %}>Producing an excess of electricity</option>
+        </select>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
-        <p>Comments, other ideas, etc.</p>
-        {% if volunteer_signup_content is defined %} {{ volunteer_signup_content }} {% endif %}
+        <label>What actions have you already taken?</label>
+        <select multiple="true">
+          <option {% if action_display == true %} selected="true" {% endif %} >In-home display connected to your smart meter</option>
+          <option {% if action_led == true %} selected="true" {% endif %} >Replaced Halogen downlights with LEDs</option>
+          <option {% if action_draft_proofing == true %} selected="true" {% endif %} >Draught-proofing measures</option>
+          <option {% if action_reverse_cycle == true %} selected="true" {% endif %} >High efficiency reverse cycle air conditioner/s</option>
+          <option {% if action_efficiency_appliances == true %} selected="true" {% endif %} >High efficiency appliances</option>
+          <option {% if action_double_glazing == true %} selected="true" {% endif %} >Retrofitted double glazing for your windows</option>
+          <option {% if action_wall_insulation == true %} selected="true" {% endif %} >Retrofitted wall insulation</option>
+          <option {% if action_solar == true %} selected="true" {% endif %}> Installed rooftop solar</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Installed rooftop solar</label>
+        <select>
+          <option {% if action_solar == "1kw" %} selected="true" {% endif %} >1kw</option>
+          <option {% if action_solar == "1.5kw" %} selected="true" {% endif %} >1.5kw</option>
+          <option {% if action_solar == "2kw" %} selected="true" {% endif %} >2kw</option>
+          <option {% if action_solar == "2.5kw" %} selected="true" {% endif %} >2.5kw</option>
+          <option {% if action_solar == "3kw" %} selected="true" {% endif %} >3kw</option>
+          <option {% if action_solar == "3.5kw" %} selected="true" {% endif %} >3.5kw</option>
+          <option {% if action_solar == "4kw" %} selected="true" {% endif %} >4kw</option>
+          <option {% if action_solar == "4.5kw" %} selected="true" {% endif %} >4.5kw</option>
+          <option {% if action_solar == "5kw" %} selected="true" {% endif %} >5kw</option>
+          <option {% if action_solar == "over 5kw" %} selected="true" {% endif %} >over 5kw</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Comments, other ideas, etc.</label>
+        <input {% if volunteer_signup_content is defined %} value="{{ volunteer_signup_content }}" {% endif %} >
       </div>
     </div>
 

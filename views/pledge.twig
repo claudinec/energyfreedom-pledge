@@ -34,31 +34,11 @@
       <div class="large-6 medium-6 columns">
         <label>What type of house do you have?</label>
         <select>
-          {% if house_type == "Stand alone home" %}
-            <option selected="true">Stand alone home</option>
-          {% else %}
-            <option>Stand alone home</option>
-          {% endif %}
-          {% if house_type == "Semi-detached home" %}
-            <option selected="true">Semi-detached home</option>
-          {% else %}
-            <option>Semi-detached home</option>
-          {% endif %}
-          {% if house_type == "Town house" %}
-            <option selected="true">Town house</option>
-          {% else %}
-            <option>Town house</option>
-          {% endif %}
-          {% if house_type == "Apartment" %}
-            <option selected="true">Apartment</option>
-          {% else %}
-            <option>Apartment</option>
-          {% endif %}
-          {% if house_type == "Rural" %}
-            <option selected="true">Rural</option>
-          {% else %}
-            <option>Rural</option>
-          {% endif %}
+          <option {% if house_type == "Stand alone home" %} selected="true" {% endif %} >Stand alone home</option>
+          <option {% if house_type == "Semi-detached home" %} selected="true" {% endif %} >Semi-detached home</option>
+          <option {% if house_type == "Town house" %} selected="true" {% endif %} >Town house</option>
+          <option {% if house_type == "Apartment" %} selected="true" {% endif %} >Apartment</option>
+          <option {% if house_type == "Rural" %} selected="true" {% endif %} >Rural</option>
         </select>
       </div>
 
@@ -78,31 +58,11 @@
       <div class="large-6 medium-6 columns">
         <label>What are your walls constructed from?</label>
         <select multiple="true">
-          {% if brick_veneer == true %}
-            <option selected="true">Brick veneer</option>
-          {% else %}
-            <option>Brick veneer</option>
-          {% endif %}
-          {% if double_brick == true %}
-            <option selected="true">Double brick</option>
-          {% else %}
-            <option>Double brick</option>
-          {% endif %}
-          {% if weatherboard == true %}
-            <option selected="true">Weatherboard</option>
-          {% else %}
-            <option>Weatherboard</option>
-          {% endif %}
-          {% if al_cladding == true %}
-            <option selected="true">Aluminium cladding</option>
-          {% else %}
-            <option>Aluminium cladding</option>
-          {% endif %}
-          {% if panels == true %}
-            <option selected="true">Structurally integrated panels</option>
-          {% else %}
-            <option>Structurally integrated panels</option>
-          {% endif %}
+          <option {% if brick_veneer == true %} selected="true" {% endif %} >Brick veneer</option>
+          <option {% if double_brick == true %} selected="true" {% endif %} >Double brick</option>
+          <option {% if weatherboard == true %} selected="true" {% endif %} >Weatherboard</option>
+          <option {% if al_cladding == true %} selected="true" {% endif %} >Aluminium cladding</option>
+          <option {% if panels == true %} selected="true" {% endif %} >Structurally integrated panels</option>
         </select>
       </div>
 
@@ -122,26 +82,10 @@
       <div class="large-6 medium-6 columns">
         <label>What kind of insulation do you have in your walls?</label>
         <select multiple="true">
-          {% if wall_batts == true %}
-            <option selected="true">Batts</option>
-          {% else %}
-            <option>Batts</option>
-          {% endif %}
-          {% if wall_infill == true %}
-            <option selected="true">Foam infill</option>
-          {% else %}
-            <option>Foam infill</option>
-          {% endif %}
-          {% if wall_foil == true %}
-            <option selected="true">Reflective foil</option>
-          {% else %}
-            <option>Reflective foil</option>
-          {% endif %}
-          {% if no_ins == true %}
-            <option selected="true">No insulation</option>
-          {% else %}
-            <option>No insulation</option>
-          {% endif %}
+          <option {% if wall_batts == true %} selected="true" {% endif %} >Batts</option>
+          <option {% if wall_infill == true %} selected="true" {% endif %} >Foam infill</option>
+          <option {% if wall_foil == true %} selected="true" {% endif %} >Reflective foil</option>
+          <option {% if no_ins == true %} selected="true" {% endif %} >No insulation</option>
         </select>
       </div>
 

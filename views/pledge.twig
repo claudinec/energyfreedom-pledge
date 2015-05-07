@@ -189,7 +189,6 @@
       <div class="large-6 medium-6 columns">
         <label>Glazing</label>
         <select>
-          {% if windows_glazing is defined %} {{ windows_glazing }} {% endif %}
           <option {% if windows_glazing == "Single glazed" %} selected="true" {% endif %}>Single glazed</option>
           <option {% if windows_glazing == "Single glazed with reflective coating" %} selected="true" {% endif %}>Single glazed with reflective coating</option>
           <option {% if windows_glazing == "Double glazed" %} selected="true" {% endif %}>Double glazed</option>
@@ -270,61 +269,61 @@
       <hr>
 
       <div class="large-6 medium-6 columns">
-        <p>How do you heat your home?</p>
-      </div>
-      <div class="large-6 medium-6 columns">
-        <p>
-<option {% if heating_gas_ducted == true %} selected="true" {% endif %} >Gas ducted</option>
-<option {% if heating_gas_room == true %} selected="true" {% endif %} >Gas in room</option>
-<option {% if heating_electric_ducted == true %} selected="true" {% endif %} >Electric ducted</option>
-<option {% if heating_electric_wall_radiator == true %} selected="true" {% endif %} >Electric on wall radiator</option>
-<option {% if heating_electric_portable_radiator == true %} selected="true" {% endif %} >Electric portable radiator</option>
-<option {% if heating_electric_oil_bar_header == true %} selected="true" {% endif %} >Electric oil/bar heater</option>
-<option {% if heating_hydronic_heating_wall == true %} selected="true" {% endif %} >Hydronic heating on wall</option>
-<option {% if heating_hydronic_heating_slab == true %} selected="true" {% endif %} >Hydronic heating in slab</option>
-<option {% if heating_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
-<option {% if heating_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
-          {% if heating_wood_fired == true %} Wood-fired heating {% endif %}
-        </p>
+        <label>How do you heat your home?</label>
+        <select multiple="true">
+          <option {% if heating_gas_ducted == true %} selected="true" {% endif %} >Gas ducted</option>
+          <option {% if heating_gas_room == true %} selected="true" {% endif %} >Gas in room</option>
+          <option {% if heating_electric_ducted == true %} selected="true" {% endif %} >Electric ducted</option>
+          <option {% if heating_electric_wall_radiator == true %} selected="true" {% endif %} >Electric on wall radiator</option>
+          <option {% if heating_electric_portable_radiator == true %} selected="true" {% endif %} >Electric portable radiator</option>
+          <option {% if heating_electric_oil_bar_header == true %} selected="true" {% endif %} >Electric oil/bar heater</option>
+          <option {% if heating_hydronic_heating_wall == true %} selected="true" {% endif %} >Hydronic heating on wall</option>
+          <option {% if heating_hydronic_heating_slab == true %} selected="true" {% endif %} >Hydronic heating in slab</option>
+          <option {% if heating_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
+          <option {% if heating_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
+          <option {% if heating_wood_fired == true %} selected="true" {% endif %} > Wood-fired heating</option>
+        </select>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>How do you cool your home?</p>
-      </div>
-      <div class="large-6 medium-6 columns">
-        <p>
-<option {% if cooling_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
-<option {% if cooling_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
-<option {% if cooling_ceiling_fan == true %} selected="true" {% endif %} >Ceiling fan</option>
-<option {% if cooling_ducted_evaporative_cooling == true %} selected="true" {% endif %} >Ducted evaporated cooling</option>
-          {% if cooling_room_evaporative_cooling == true %} In room evaporated cooling {% endif %}
-        </p>
+        <label>How do you cool your home?</label>
+        <select multiple="true">
+          <option {% if cooling_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
+          <option {% if cooling_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
+          <option {% if cooling_ceiling_fan == true %} selected="true" {% endif %} >Ceiling fan</option>
+          <option {% if cooling_ducted_evaporative_cooling == true %} selected="true" {% endif %} >Ducted evaporated cooling</option>
+          <option {% if cooling_room_evaporative_cooling == true %} selected="true" {% endif %} >In room evaporated cooling</option>
+        </select>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>How do you cook?</p>
-      </div>
-      <div class="large-6 medium-6 columns">
-        <p>
-<option {% if cooking_gas_cooktop == true %} selected="true" {% endif %} >Gas cooktop</option>
-<option {% if cooking_electric_ceramic_cooktop == true %} selected="true" {% endif %} >Electric ceramic</option>
-<option {% if cooking_induction_cooktop == true %} selected="true" {% endif %} >Induction cooktop</option>
-<option {% if cooking_electric_oven == true %} selected="true" {% endif %} >Electric oven</option>
-          {% if cooking_gas_oven == true %} Gas oven {% endif %}
-        </p>
+        <label>How do you cook?</label>
+        <select multiple="true">
+          <option {% if cooking_gas_cooktop == true %} selected="true" {% endif %} >Gas cooktop</option>
+          <option {% if cooking_electric_ceramic_cooktop == true %} selected="true" {% endif %} >Electric ceramic</option>
+          <option {% if cooking_induction_cooktop == true %} selected="true" {% endif %} >Induction cooktop</option>
+          <option {% if cooking_electric_oven == true %} selected="true" {% endif %} >Electric oven</option>
+          <option {% if cooking_gas_oven == true %} selected="true" {% endif %} > Gas oven</option>
+        </select>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 medium-6 columns">
-        <p>How do you heat your water?</p>
-      </div>
-      <div class="large-6 medium-6 columns">
-        <p>{% if hot_water is defined %} {{ hot_water }} {% endif %} </p>
+        <label>How do you heat your water?</label>
+        <select>
+          <option {% if hot_water == "Solar with gas booster" %} selected="true" {% endif %} >Solar with gas booster</option>
+          <option {% if hot_water == "Solar with electric booster" %} selected="true" {% endif %} >Solar with electric booster</option>
+          <option {% if hot_water == "Solar with no boost" %} selected="true" {% endif %} >Solar with no boost</option>
+          <option {% if hot_water == "Gas" %} selected="true" {% endif %} >Gas</option>
+          <option {% if hot_water == "Instant Gas" %} selected="true" {% endif %} > Instant Gas</option>
+          <option {% if hot_water == "Electric" %} selected="true" {% endif %} >Electric</option>
+          <option {% if hot_water == "Electric heat pump" %} selected="true" {% endif %} >Electric heat pump</option>
+        </select>
       </div>
     </div>
 

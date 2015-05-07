@@ -83,7 +83,7 @@ $app->get('/pledge', function () use ($app, $client) {
     if (isset($response['result']['error'])) {
     switch($response['result']['error']) {
         case 'invalid_grant':
-            $error = "<b>ERROR</b>: Invalid Grant. This code is invalid, expired, or revoked.<br>";
+            $error = "<p><strong>ERROR</strong>: Invalid Grant. This code is invalid, expired, or revoked. <strong><a href='/'>START AGAIN.</a></strong></p>";
             break;
 
         default:

@@ -79,7 +79,7 @@ $app->get('/', function() use ($app, $client) {
 });
 
 /**
- * The pledge app.
+ * The pledge viewer: display logged-in user's pledge data.
  */
 $app->get('/pledge', function () use ($app, $client) {
     global $appUrl, $baseApiUrl, $redirectUrl;
@@ -125,10 +125,10 @@ $app->get('/pledge', function () use ($app, $client) {
 	    die($error);
     }
 
+    // TODO This could be more elegant.
     // Query custom field values and pre-fill form with them.
-
-    // Template for page content.
-    return $app['twig']->render('pledge.twig', array(
+    return $app['twig']->render('pledge.twig',
+        array(
             'title' => 'Energy Freedom Pledge Viewer',
             'name' => $response['result']['person']['full_name'],
             'house_type' => $response['result']['person']['house_type'],

@@ -27,7 +27,7 @@
     </div>
 
     {### BEGIN FORM ###}
-    <form>
+    <form action="/pledge/submit" method="post">
 
       {### House and walls ###}
 
@@ -390,8 +390,11 @@
 
       <div class="row">
         <div class="large-12 columns">
-          <p><a href="#" class="small radius button">Submit</a>
-             <a href="/" class="small radius button">Start again</a></p>
+          <input type="hidden" id="_method" name="_method" value="PUT" />
+          {# submit #}
+          <input type="submit" class="small radius button" />
+          {# reset #}
+          <input type="reset" class="small radius button" />
         </div>
       </div>
 

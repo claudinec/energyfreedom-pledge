@@ -30,17 +30,28 @@ $authorizeUrl   = $baseApiUrl . '/oauth/authorize';
 $client         = new OAuth2\Client($clientId, $clientSecret);
 $authUrl        = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);
 
-/**
- * Error handling.
- */
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Register Monolog.
+ */
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__.'/../logs/development.log',
+    'monolog.level'   => "WARNING",
+    'monolog.name'    => "pledge",
+));
+
+/**
+ * Debugging.
+ */
 $app->error(function (\Exception $e, $code) {
     if ($app['debug']) {
         return;
     }
 
     return new Response($code . " error: \n<pre>" . $e . "</pre>");
+    $app['monolog']->addDebug($code . " error: " . $e);
 });
 
 /**
@@ -84,6 +95,7 @@ $app->get('/pledge', function () use ($app, $client) {
     switch($response['result']['error']) {
         case 'invalid_grant':
             $error = "<p><strong>ERROR</strong>: Invalid Grant. This code is invalid, expired, or revoked. <strong><a href='/'>START AGAIN.</a></strong></p>";
+            $app['monolog']->addError("This code is invalid, expired, or revoked.");
             break;
 
         default:

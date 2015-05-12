@@ -4,6 +4,7 @@
         "adoy/oauth2": "dev-master",
         "liquid/liquid" : "~1.0",
         "silex/silex": "~1.2",
-        "twig/twig": "~1.18"
+        "twig/twig": "~1.18",
+        "monolog/monolog": "~1.13"
     }
 }

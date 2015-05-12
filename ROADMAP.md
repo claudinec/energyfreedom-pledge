@@ -20,4 +20,3 @@ ROADMAP
 ---
 
 * App ready for public use.
-

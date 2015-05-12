@@ -5,6 +5,7 @@
         "liquid/liquid" : "~1.0",
         "silex/silex": "~1.2",
         "twig/twig": "~1.18",
-        "monolog/monolog": "~1.13"
+        "monolog/monolog": "~1.13",
+        "phpunit/phpunit": "~4.6"
     }
 }

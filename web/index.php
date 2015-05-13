@@ -44,6 +44,11 @@ $app['debug'] = true;
 // });
 
 /**
+ * Register Form.
+ */
+$app->register(new Silex\Provider\FormServiceProvider());
+
+/**
  * Register Monolog.
  */
 $app->register(new Silex\Provider\MonologServiceProvider(), array(

@@ -5,6 +5,10 @@
         "liquid/liquid" : "~1.0",
         "silex/silex": "~1.2",
         "twig/twig": "~1.18",
-        "monolog/monolog": "~1.13"
+        "monolog/monolog": "~1.13",
+        "symfony/form": "~2.6",
+        "symfony/security-csrf": "~2.6",
+        "symfony/twig-bridge": "~2.6",
+        "symfony/translation": "~2.6"
     }
 }

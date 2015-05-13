@@ -6,6 +6,8 @@
         "silex/silex": "~1.2",
         "twig/twig": "~1.18",
         "monolog/monolog": "~1.13",
-        "phpunit/phpunit": "~4.6"
+        "phpunit/phpunit": "~4.6",
+        "symfony/browser-kit": "~2.6",
+        "symfony/http-kernel": "~2.6"
     }
 }

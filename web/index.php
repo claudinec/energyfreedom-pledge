@@ -10,28 +10,38 @@ require $oauth_path . 'Client.php';
 require $oauth_path . 'GrantType/IGrantType.php';
 require $oauth_path . 'GrantType/AuthorizationCode.php';
 
-$app = new Silex\Application();
-$app['debug'] = true;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Global variables.
  *
  * Variables set in config/nationbuilder.php:
+ * - $appUrl
+ * - $baseApiUrl
  * - $clientId
  * - $clientSecret
  */
 require __DIR__ . '/../config/nationbuilder.php';
-$appUrl         = 'http://energyfreedom-pledge.local:8888/';
 $redirectUrl    = $appUrl . 'pledge';
-
-$baseApiUrl     = 'https://beyondzeroemissions.nationbuilder.com';
 $authorizeUrl   = $baseApiUrl . '/oauth/authorize';
-
 $client         = new OAuth2\Client($clientId, $clientSecret);
 $authUrl        = $client->getAuthenticationUrl($authorizeUrl, $redirectUrl);
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+$app = new Silex\Application();
+$app['debug'] = true;
+
+/**
+ * Debugging.
+ */
+// $app->error(function (\Exception $e, $code) {
+//     if ($app['debug']) {
+//         return;
+//     }
+//
+//     return new Response($code . " error: \n<pre>" . $e . "</pre>");
+//     $app['monolog']->addDebug($code . " error: " . $e);
+// });
 
 /**
  * Register Monolog.
@@ -41,18 +51,6 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.level'   => "WARNING",
     'monolog.name'    => "pledge",
 ));
-
-/**
- * Debugging.
- */
-$app->error(function (\Exception $e, $code) {
-    if ($app['debug']) {
-        return;
-    }
-
-    return new Response($code . " error: \n<pre>" . $e . "</pre>");
-    $app['monolog']->addDebug($code . " error: " . $e);
-});
 
 /**
  * Register Twig provider.

@@ -129,7 +129,7 @@ $app->get('/pledge', function () use ($app, $client) {
     }
 
     // Query custom field values and pre-fill form with them.
-    $fields = array(
+    $field_names = array(
         'full_name', 'house_type', 'house_type_other', 'brick_veneer',
         'double_brick', 'weatherboard', 'al_cladding', 'panels',
         'wall_construction_other', 'wall_batts', 'wall_infill', 'wall_foil',
@@ -144,26 +144,28 @@ $app->get('/pledge', function () use ($app, $client) {
         'window_coverings_external', 'other_external',
         'heating_gas_ducted', 'heating_gas_room', 'heating_electric_ducted',
         'heating_electric_wall_radiator', 'heating_electric_portable_radiator',
-        'heating_electric_oil_bar_radiator', 'heating_hydronic_heating_wall',
+        'heating_electric_oil_bar_header', 'heating_hydronic_heating_wall',
         'heating_hydronic_heating_slab', 'heating_reverse_cycle_pre_2000',
         'heating_reverse_cycle_post_2000', 'heating_wood_fired',
         'cooling_reverse_cycle_pre_2000', 'cooling_reverse_cycle_post_2000',
         'cooling_ceiling_fan', 'cooling_ducted_evaporative_cooling',
         'cooling_room_evaporative_cooling', 'cooking_gas_cooktop',
         'cooking_electric_ceramic_cooktop', 'cooking_induction_cooktop',
-        'cooktop_electric_oven', 'cooktop_gas_oven', 'hot_water',
+        'cooking_electric_oven', 'cooking_gas_oven', 'hot_water',
         'energy_production', 'action_display', 'action_led',
         'action_draft_proofing', 'action_reverse_cycle',
         'action_efficiency_appliances', 'action_double_glazing',
         'action_wall_insulation', 'action_solar', 'volunteer_signup_content',
     );
 
-    return $app['twig']->render('pledge.twig',
-        array(
-            'title' => 'Energy Freedom Pledge Viewer',
-            'name' => $response['result']['person']['full_name'],
-        )
+    $fields = array(
+        'title' => 'Energy Freedom Pledge Viewer',
     );
+    foreach ($field_names as $field_name) {
+        $fields[$field_name] = $response['result']['person'][$field_name];
+    }
+
+    return $app['twig']->render('pledge.twig', $fields);
 });
 
 $app->run();

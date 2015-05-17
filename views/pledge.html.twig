@@ -21,13 +21,14 @@
         <div class="panel">
           <h4>Welcome, {{ full_name }}.</h4>
 
-          <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout?page_id=17">sign out</a> and try again.</p>
+          <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout">sign out</a> and try again.</p>
         </div>
       </div>
     </div>
 
     {### BEGIN FORM ###}
-    <form action="/pledge/submit" method="post">
+    <!-- <form action="/pledge/submit" enctype="multipart/form-data" method="post"> -->
+    {{ form_start(form) }}
 
       {### House and walls ###}
 
@@ -395,8 +396,9 @@
       </div>
 
       {### END FORM ###}
+      {{ form_end(form) }}
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="large-12 columns">
           <input type="hidden" id="_method" name="_method" value="PUT" />
           {# submit #}
@@ -406,7 +408,7 @@
         </div>
       </div>
 
-    </form>
+    </form> -->
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>

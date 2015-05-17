@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
+    <title>Energy Freedom Pledge Viewer</title>
     <link rel="stylesheet" href="css/foundation.min.css" />
     <script src="js/vendor/modernizr.js"></script>
   </head>
@@ -11,409 +11,35 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <h1>{{ title }}</h1>
+        <h1>Energy Freedom Pledge Viewer</h1>
       </div>
     </div>
 
-    {### User ###}
-    <div class="row">
-      <div class="large-6 medium-6 columns">
-        <div class="panel">
-          <h4>Welcome, {{ full_name }}.</h4>
-
-          <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout">sign out</a> and try again.</p>
-        </div>
-      </div>
-    </div>
-
-    {### BEGIN FORM ###}
-    <!-- <form action="/pledge/submit" enctype="multipart/form-data" method="post"> -->
     {{ form_start(form) }}
 
-      {### House and walls ###}
-
-      <div class="row">
+    <div class="row">
         <div class="large-6 medium-6 columns">
-          <label>What type of house do you have?</label>
-          <select>
-            <option></option>
-            <option {% if house_type == "Stand alone home" %} selected="true" {% endif %} >Stand alone home</option>
-            <option {% if house_type == "Semi-detached home" %} selected="true" {% endif %} >Semi-detached home</option>
-            <option {% if house_type == "Town house" %} selected="true" {% endif %} >Town house</option>
-            <option {% if house_type == "Apartment" %} selected="true" {% endif %} >Apartment</option>
-            <option {% if house_type == "Rural" %} selected="true" {% endif %} >Rural</option>
-          </select>
+            <div class="panel">
+                <h4>Welcome, {{ form_widget(form.full_name) }}.</h4>
+                <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout">sign out</a> and try again.</p>
+            </div>
         </div>
+    </div>
 
-        <div>
-          <div class="large-6 medium-6 columns">
-            <label>Other</label>
-            <input {% if house_type_other is defined %} value="{{ house_type_other }}" {% endif %} >
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
+    <div class="row">
         <div class="large-6 medium-6 columns">
-          <label>What are your walls constructed from?</label>
-          <select multiple="true">
-            <option {% if brick_veneer == true %} selected="true" {% endif %} >Brick veneer</option>
-            <option {% if double_brick == true %} selected="true" {% endif %} >Double brick</option>
-            <option {% if weatherboard == true %} selected="true" {% endif %} >Weatherboard</option>
-            <option {% if al_cladding == true %} selected="true" {% endif %} >Aluminium cladding</option>
-            <option {% if panels == true %} selected="true" {% endif %} >Structurally integrated panels</option>
-          </select>
+            {{ form_widget(form) }}
         </div>
+    </div>
 
-        <div>
-          <div class="large-6 medium-6 columns">
-            <label>Other</label>
-            <input {% if wall_construction_other is defined %} value="{{ wall_construction_other }}" {% endif %} >
-          </div>
-        </div>
-      </div>
+        <input type="submit" class="small radius button" />
+        <input type="reset" class="small radius button" />
+        {{ form_end(form) }}
 
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>What kind of insulation do you have in your walls?</label>
-          <select multiple="true">
-            <option {% if wall_batts == true %} selected="true" {% endif %} >Batts</option>
-            <option {% if wall_infill == true %} selected="true" {% endif %} >Foam infill</option>
-            <option {% if wall_foil == true %} selected="true" {% endif %} >Reflective foil</option>
-            <option {% if no_ins == true %} selected="true" {% endif %} >No insulation</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if wall_insulation_other is defined %} value="{{ wall_insulation_other }}" {% endif %} >
-        </div>
-      </div>
-
-      {### Roof ###}
-
-      <div class="row">
-
-        <hr>
-
-        <div class="large-6 medium-6 columns">
-          <label>What is your roof constructed from?</label>
-          <select multiple="true">
-            <option {% if tiles == true %} selected="true" {% endif %} >Tiles</option>
-            <option {% if corrugated_metal == true %} selected="true" {% endif %} >Corrugated metal</option>
-            <option {% if slate == true %} selected="true" {% endif %} >Slate</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if roof_construction_other is defined %} value="{{ roof_construction_other }}" {% endif %} >
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>What kind of insulation do you have in your roof?</label>
-          <select multiple="true">
-            <option {% if roof_batts == true %} selected="true" {% endif %} >Batts</option>
-            <option {% if roof_infill == true %} selected="true" {% endif %} >Foam infill</option>
-            <option {% if roof_foil == true %} selected="true" {% endif %} >Reflective foil</option>
-            <option {% if no_roof_ins == true %} selected="true" {% endif %} >No insulation</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if roof_insulation_other is defined %} value="{{ roof_insulation_other }}" {% endif %} >
-        </div>
-      </div>
-
-      {### Floor ###}
-
-      <div class="row">
-
-        <hr>
-
-        <div class="large-6 medium-6 columns">
-          <label>What is your floor constructed from?</label>
-          <select multiple="true">
-            <option {% if slab_on_ground == true %} selected="true" {% endif %} >Concrete slab on ground</option>
-            <option {% if slab_off_ground == true %} selected="true" {% endif %} >Concrete slab off ground</option>
-            <option {% if timber_boards == true %} selected="true" {% endif %} >Timber boards</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if floor_construction_other is defined %} value="{{ floor_construction_other }}" {% endif %} >
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>What kind of underfloor insulation do you have?</label>
-          <select multiple="true">
-            <option {% if floor_batts == true %} selected="true" {% endif %} >Batts</option>
-            <option {% if floor_infill == true %} selected="true" {% endif %} >Foam infill</option>
-            <option {% if floor_foil == true %} selected="true" {% endif %} >Reflective foil</option>
-            <option {% if no_floor_ins == true %} selected="true" {% endif %} >No insulation</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if floor_insulation_other is defined %} value="{{ floor_insulation_other }}" {% endif %} >
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>Floor coverings</label>
-          <select multiple="true">
-            <option {% if rooms_carpeted is defined %} selected="true" {% endif %} >{{ rooms_carpeted }} rooms carpeted</option>
-            <option {% if rooms_tiled is defined %} selected="true" {% endif %} >{{ rooms_tiled }} rooms tiled</option>
-            <option {% if rooms_timber_floors is defined %} selected="true" {% endif %}> {{ rooms_timber_floors }} rooms with timber floors</option>
-          </select>
-        </div>
-      </div>
-
-      {### Windows ###}
-
-      <div class="row">
-
-        <hr>
-
-        <div class="large-12 columns">
-          <p>What type of windows do you have?</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>Glazing</label>
-          <select>
-            <option></option>
-            <option {% if windows_glazing == "Single glazed" %} selected="true" {% endif %}>Single glazed</option>
-            <option {% if windows_glazing == "Single glazed with reflective coating" %} selected="true" {% endif %}>Single glazed with reflective coating</option>
-            <option {% if windows_glazing == "Double glazed" %} selected="true" {% endif %}>Double glazed</option>
-            <option {% if windows_glazing == "Triple Glazed" %} selected="true" {% endif %}>Triple Glazed</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>Frame</label>
-          <select>
-            <option></option>
-            <option {% if window_frame == "Timber" %} selected="true" {% endif %}>Timber</option>
-            <option {% if window_frame == "Aluminium" %} selected="true" {% endif %}>Aluminium</option>
-            <option {% if window_frame == "Plastic (uPVC)" %} selected="true" {% endif %}>Plastic (uPVC)</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if window_frame_other is defined %} value="{{ window_frame_other }}" {% endif %} >
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <p>What type of window coverings do you have?</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>Internal</label>
-          <select>
-            <option></option>
-            <option {% if window_coverings_internal == "None" %} selected="true" {% endif %}>None</option>
-            <option {% if window_coverings_internal == "Venetian blinds" %} selected="true" {% endif %}>Venetian blinds</option>
-            <option {% if window_coverings_internal == "Block-out blinds" %} selected="true" {% endif %}>Block-out blinds</option>
-            <option {% if window_coverings_internal == "Light fabric blinds" %} selected="true" {% endif %}>Light fabric blinds</option>
-            <option {% if window_coverings_internal == "Heavy fabric blinds" %} selected="true" {% endif %}>Heavy fabric blinds</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if other_internal is defined %} value="{{ other_internal }}" {% endif %} >
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>Do you have pelmets?</label>
-          <select>
-            <option {% if window_coverings_internal_pelmets == true %} selected="true" {% endif %} >Yes</option>
-            <option {% if no_pelmets == true %} selected="true" {% endif %}>No</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>External</label>
-          <select>
-            <option></option>
-            <option {% if window_coverings_external == "Awnings" %} selected="true" {% endif %}>Awnings</option>
-            <option {% if window_coverings_external == "Natural shading" %} selected="true" {% endif %}>Natural shading</option>
-          </select>
-        </div>
-
-        <div class="large-6 medium-6 columns">
-          <label>Other</label>
-          <input {% if other_external is defined %} value="{{ other_external }}" {% endif %} >
-        </div>
-      </div>
-
-      {### Heating and cooling ###}
-
-      <div class="row">
-
-        <hr>
-
-        <div class="large-6 medium-6 columns">
-          <label>How do you heat your home?</label>
-          <select multiple="true">
-            <option {% if heating_gas_ducted == true %} selected="true" {% endif %} >Gas ducted</option>
-            <option {% if heating_gas_room == true %} selected="true" {% endif %} >Gas in room</option>
-            <option {% if heating_electric_ducted == true %} selected="true" {% endif %} >Electric ducted</option>
-            <option {% if heating_electric_wall_radiator == true %} selected="true" {% endif %} >Electric on wall radiator</option>
-            <option {% if heating_electric_portable_radiator == true %} selected="true" {% endif %} >Electric portable radiator</option>
-            <option {% if heating_electric_oil_bar_header == true %} selected="true" {% endif %} >Electric oil/bar heater</option>
-            <option {% if heating_hydronic_heating_wall == true %} selected="true" {% endif %} >Hydronic heating on wall</option>
-            <option {% if heating_hydronic_heating_slab == true %} selected="true" {% endif %} >Hydronic heating in slab</option>
-            <option {% if heating_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
-            <option {% if heating_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
-            <option {% if heating_wood_fired == true %} selected="true" {% endif %} > Wood-fired heating</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>How do you cool your home?</label>
-          <select multiple="true">
-            <option {% if cooling_reverse_cycle_pre_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed pre 2000</option>
-            <option {% if cooling_reverse_cycle_post_2000 == true %} selected="true" {% endif %} >Reverse cycle air conditioner installed post 2000</option>
-            <option {% if cooling_ceiling_fan == true %} selected="true" {% endif %} >Ceiling fan</option>
-            <option {% if cooling_ducted_evaporative_cooling == true %} selected="true" {% endif %} >Ducted evaporated cooling</option>
-            <option {% if cooling_room_evaporative_cooling == true %} selected="true" {% endif %} >In room evaporated cooling</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>How do you cook?</label>
-          <select multiple="true">
-            <option {% if cooking_gas_cooktop == true %} selected="true" {% endif %} >Gas cooktop</option>
-            <option {% if cooking_electric_ceramic_cooktop == true %} selected="true" {% endif %} >Electric ceramic</option>
-            <option {% if cooking_induction_cooktop == true %} selected="true" {% endif %} >Induction cooktop</option>
-            <option {% if cooking_electric_oven == true %} selected="true" {% endif %} >Electric oven</option>
-            <option {% if cooking_gas_oven == true %} selected="true" {% endif %} > Gas oven</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-6 medium-6 columns">
-          <label>How do you heat your water?</label>
-          <select>
-            <option></option>
-            <option {% if hot_water == "Solar with gas booster" %} selected="true" {% endif %} >Solar with gas booster</option>
-            <option {% if hot_water == "Solar with electric booster" %} selected="true" {% endif %} >Solar with electric booster</option>
-            <option {% if hot_water == "Solar with no boost" %} selected="true" {% endif %} >Solar with no boost</option>
-            <option {% if hot_water == "Gas" %} selected="true" {% endif %} >Gas</option>
-            <option {% if hot_water == "Instant Gas" %} selected="true" {% endif %} > Instant Gas</option>
-            <option {% if hot_water == "Electric" %} selected="true" {% endif %} >Electric</option>
-            <option {% if hot_water == "Electric heat pump" %} selected="true" {% endif %} >Electric heat pump</option>
-          </select>
-        </div>
-      </div>
-
-      {### Energy freedom ###}
-
-      <div class="row">
-
-        <hr>
-
-        <div class="large-8 medium-8 columns">
-          <label>How close are you to producing more electricity than you use and achieving Energy Freedom?</label>
-          <select>
-            <option></option>
-            <option {% if energy_production=="Thinking about generating a portion of your electricity needs" %} selected="true" {% endif %}>Thinking about generating a portion of your electricity needs</option>
-            <option {% if energy_production=="Currently installing ways to produce your electricity needs" %} selected="true" {% endif %}>Currently installing ways to produce your electricity needs</option>
-            <option {% if energy_production=="Already producing some of your own electricity" %} selected="true" {% endif %}>Already producing some of your own electricity</option>
-            <option {% if energy_production=="Producing all of your own electricity" %} selected="true" {% endif %}>Producing all of your own electricity</option>
-            <option {% if energy_production=="Producing an excess of electricity" %} selected="true" {% endif %}>Producing an excess of electricity</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-8 medium-8 columns">
-          <label>What actions have you already taken?</label>
-          <select multiple="true">
-            <option {% if action_display == true %} selected="true" {% endif %} >In-home display connected to your smart meter</option>
-            <option {% if action_led == true %} selected="true" {% endif %} >Replaced Halogen downlights with LEDs</option>
-            <option {% if action_draft_proofing == true %} selected="true" {% endif %} >Draught-proofing measures</option>
-            <option {% if action_reverse_cycle == true %} selected="true" {% endif %} >High efficiency reverse cycle air conditioner/s</option>
-            <option {% if action_efficiency_appliances == true %} selected="true" {% endif %} >High efficiency appliances</option>
-            <option {% if action_double_glazing == true %} selected="true" {% endif %} >Retrofitted double glazing for your windows</option>
-            <option {% if action_wall_insulation == true %} selected="true" {% endif %} >Retrofitted wall insulation</option>
-            <option {% if action_solar == true %} selected="true" {% endif %}> Installed rooftop solar</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-4 medium-4 columns">
-          <label>Installed rooftop solar &ndash; How much?</label>
-          <select>
-            <option></option>
-            <option {% if solar_amount == "1kw" %} selected="true" {% endif %} >1kw</option>
-            <option {% if solar_amount == "1.5kw" %} selected="true" {% endif %} >1.5kw</option>
-            <option {% if solar_amount == "2kw" %} selected="true" {% endif %} >2kw</option>
-            <option {% if solar_amount == "2.5kw" %} selected="true" {% endif %} >2.5kw</option>
-            <option {% if solar_amount == "3kw" %} selected="true" {% endif %} >3kw</option>
-            <option {% if solar_amount == "3.5kw" %} selected="true" {% endif %} >3.5kw</option>
-            <option {% if solar_amount == "4kw" %} selected="true" {% endif %} >4kw</option>
-            <option {% if solar_amount == "4.5kw" %} selected="true" {% endif %} >4.5kw</option>
-            <option {% if solar_amount == "5kw" %} selected="true" {% endif %} >5kw</option>
-            <option {% if solar_amount == "over 5kw" %} selected="true" {% endif %} >over 5kw</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <label>Comments, other ideas, etc.</label>
-          <textarea> {% if volunteer_signup_content is defined %} {{ volunteer_signup_content }} {% endif %} </textarea>
-        </div>
-      </div>
-
-      {### END FORM ###}
-      {{ form_end(form) }}
-
-      <!-- <div class="row">
-        <div class="large-12 columns">
-          <input type="hidden" id="_method" name="_method" value="PUT" />
-          {# submit #}
-          <input type="submit" class="small radius button" />
-          {# reset #}
-          <input type="reset" class="small radius button" />
-        </div>
-      </div>
-
-    </form> -->
-
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-  </body>
-</html>
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script>
+          $(document).foundation();
+        </script>
+      </body>
+    </html>

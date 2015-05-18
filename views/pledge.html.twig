@@ -15,31 +15,42 @@
       </div>
     </div>
 
-    {{ form_start(form) }}
+        {### BEGIN FORM ###}
+        {{ form_start(form) }}
 
+    {### User ###}
     <div class="row">
-        <div class="large-6 medium-6 columns">
-            <div class="panel">
-                <h4>Welcome, {{ form_widget(form.full_name) }}.</h4>
-                <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout">sign out</a> and try again.</p>
-            </div>
-        </div>
+      <div class="large-8 medium-8 columns">
+          <div class="panel">
+      <h4>Welcome, {{ full_name }}.</h4>
+      <p>If this isn't you, please <a href="http://energyfreedom-beyondzeroemissions.nationbuilder.com/logout">sign out</a> and try again.</p>
+  </div>
+
+      </div>
     </div>
 
-    <div class="row">
-        <div class="large-6 medium-6 columns">
-            {{ form_widget(form) }}
+      <div class="row">
+        <div class="large-8 medium-8 columns">
+          {{ form_widget(form) }}
         </div>
-    </div>
 
-        <input type="submit" class="small radius button" />
-        <input type="reset" class="small radius button" />
-        {{ form_end(form) }}
+      {### END FORM ###}
 
-        <script src="js/vendor/jquery.js"></script>
-        <script src="js/foundation.min.js"></script>
-        <script>
-          $(document).foundation();
-        </script>
-      </body>
-    </html>
+      <div class="row">
+        <div class="large-12 columns">
+          <input type="submit" class="small radius button" />
+          <input type="reset" class="small radius button" />
+        </div>
+      </div>
+
+      {{ form_end(form) }}
+
+    </form>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

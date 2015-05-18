@@ -107,7 +107,7 @@ $app->get('/', function() use ($app, $client) {
 
      // Query custom field values and pre-fill form with them.
      $field_names = array(
-         'full_name', 'house_type', 'house_type_other', 'brick_veneer',
+         'house_type', 'house_type_other', 'brick_veneer',
          'double_brick', 'weatherboard', 'al_cladding', 'panels',
          'wall_construction_other', 'wall_batts', 'wall_infill', 'wall_foil',
          'no_ins', 'wall_insulation_other', 'tiles', 'corrugated_metal', 'slate',
@@ -139,47 +139,63 @@ $app->get('/', function() use ($app, $client) {
      foreach ($field_names as $field_name) {
          $data[$field_name] = $response['result']['person'][$field_name];
      }
-     $app['monolog']->addDebug($data);
-     // FIXME $data is not being sent to the template.
 
      $form = $app['form.factory']->createBuilder('form', $data)
-        ->add('full_name')
         ->add('house_type', 'choice', array(
             'choices' => array(
                 'Stand alone home', 'Semi-detached home', 'Town house',
                 'Apartment', 'Rural'
             )
         ))
-        ->add('house_type_other')
-        ->add('brick_veneer')
-        ->add('double_brick')
-        ->add('weatherboard')
-        ->add('al_cladding')
-        ->add('panels')
+        ->add('house_type_other', 'text', array(
+            'required' => false
+        ))
+        ->add('wall_construction', 'choice', array(
+            'choices' => array(
+                'brick_veneer' => 'Brick veneer',
+                'double_brick' => 'Double Brick',
+                'weatherboard' => 'Weatherboard',
+                'al_cladding'  => 'Aluminium cladding',
+                'panels'       => 'Structurally integrated panels/cladding'
+            ),
+            'multiple' => true
+        ))
         ->add('wall_construction_other')
-        ->add('wall_batts')
-        ->add('wall_infill')
-        ->add('wall_foil')
-        ->add('no_ins')
-        ->add('wall_insulation_other')
+        ->add('wall_batts', 'checkbox')
+        ->add('wall_infill', 'checkbox')
+        ->add('wall_foil', 'checkbox')
+        ->add('no_ins', 'checkbox', array(
+            'label' => 'No insulation'
+        ))
+        ->add('wall_insulation_other', 'text', array(
+            'required' => false
+        ))
         ->add('tiles')
         ->add('corrugated_metal')
         ->add('slate')
-        ->add('roof_construction_other')
+        ->add('roof_construction_other', 'text', array(
+            'required' => false
+        ))
         ->add('roof_batts')
         ->add('roof_infill')
         ->add('roof_foil')
         ->add('no_roof_ins')
-        ->add('roof_insulation_other')
+        ->add('roof_insulation_other', 'text', array(
+            'required' => false
+        ))
         ->add('slab_on_ground')
         ->add('slab_off_ground')
         ->add('timber_boards')
-        ->add('floor_construction_other')
+        ->add('floor_construction_other', 'text', array(
+            'required' => false
+        ))
         ->add('floor_batts')
         ->add('floor_infill')
         ->add('floor_foil')
         ->add('no_floor_ins')
-        ->add('floor_insulation_other')
+        ->add('floor_insulation_other', 'text', array(
+            'required' => false
+        ))
         ->add('rooms_carpeted')
         ->add('rooms_tiled')
         ->add('rooms_timber_floors')
@@ -194,14 +210,18 @@ $app->get('/', function() use ($app, $client) {
                 'Timber', 'Aluminium', 'Plastic (uPVC)'
             )
         ))
-        ->add('window_frame_other')
+        ->add('window_frame_other', 'text', array(
+            'required' => false
+        ))
         ->add('window_coverings_internal', 'choice', array(
             'choices' => array(
                 'None', 'Venetian blinds', 'Block-out blinds', 'Light fabric blinds',
                 'Heavy fabric blinds'
             )
         ))
-        ->add('other_internal')
+        ->add('other_internal', 'text', array(
+            'required' => false
+        ))
         ->add('window_coverings_internal_pelmets')
         ->add('no_pelmets')
         ->add('window_coverings_external', 'choice', array(
@@ -209,7 +229,9 @@ $app->get('/', function() use ($app, $client) {
                 'Awnings', 'Natural shading'
             )
         ))
-        ->add('other_external')
+        ->add('other_external', 'text', array(
+            'required' => false
+        ))
         ->add('heating_gas_ducted')
         ->add('heating_gas_room')
         ->add('heating_electric_ducted')
@@ -259,9 +281,12 @@ $app->get('/', function() use ($app, $client) {
             'choices' => array(
                 '1kw', '1.5kw', '2kw', '2.5kw', '3kw', '3.5kw', '4kw', '4.5kw',
                 '5kw', 'over 5kw'
-            )
+            ),
+            'required' => false
         ))
-        ->add('volunteer_signup_content')
+        ->add('volunteer_signup_content', 'textarea', array(
+            'required' => false
+        ))
         ->getForm();
 
      $form->handleRequest($request);
@@ -271,20 +296,25 @@ $app->get('/', function() use ($app, $client) {
 
          // do something with the data
          return $data;
+         // TODO Submit the data to NationBuilder.
+         // TODO Display a message to the user.
 
          // redirect somewhere
          // return $app->redirect('...');
      }
 
     //  return $app['twig']->render('pledge.html.twig', $data);
-     return $app['twig']->render('pledge.html.twig', array('form' => $form->createView()));
+    return $app['twig']->render('pledge.html.twig', array(
+         'form'      => $form->createView(),
+         'full_name' => $response['result']['person']['full_name']
+    ));
  });
 
 /**
- * Form submit handler.
+ * Submit the data to NationBuilder.
  */
-$app->post('/pledge/submit', function (Request $request) use ($app, $client) {
-    return $request;
-});
+// $app->post('/pledge/submit', function (Request $request) use ($app, $client) {
+//     return $request;
+// });
 
 $app->run();

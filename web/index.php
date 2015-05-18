@@ -121,7 +121,7 @@ $app->get('/', function() use ($app, $client) {
          'window_coverings_external', 'other_external',
          'heating_gas_ducted', 'heating_gas_room', 'heating_electric_ducted',
          'heating_electric_wall_radiator', 'heating_electric_portable_radiator',
-         'heating_electric_oil_bar_header', 'heating_hydronic_heating_wall',
+         'heating_electric_oil_bar_heater', 'heating_hydronic_heating_wall',
          'heating_hydronic_heating_slab', 'heating_reverse_cycle_pre_2000',
          'heating_reverse_cycle_post_2000', 'heating_wood_fired',
          'cooling_reverse_cycle_pre_2000', 'cooling_reverse_cycle_post_2000',
@@ -160,45 +160,99 @@ $app->get('/', function() use ($app, $client) {
             ),
             'multiple' => true
         ))
-        ->add('wall_construction_other')
-        ->add('wall_batts', 'checkbox')
-        ->add('wall_infill', 'checkbox')
-        ->add('wall_foil', 'checkbox')
+        ->add('wall_construction_other', 'text', array(
+            'required' => false
+        ))
+        ->add('wall_insulation', 'choice', array(
+            'choices' => array(
+                'wall_batts'  => 'Batts',
+                'wall_infill' => 'Foam infill',
+                'wall_foil'   => 'Reflective foil'
+            ),
+            'multiple' => true,
+            'required' => false
+        ))
         ->add('no_ins', 'checkbox', array(
             'label' => 'No insulation'
         ))
         ->add('wall_insulation_other', 'text', array(
             'required' => false
         ))
-        ->add('tiles')
-        ->add('corrugated_metal')
-        ->add('slate')
+        ->add('roof_construction', 'choice', array(
+            'choices' => array(
+                'tiles'            => 'Tiles',
+                'corrugated_metal' => 'Corrugated metal',
+                'slate'            => 'Slate'
+            ),
+            'multiple' => true
+        ))
         ->add('roof_construction_other', 'text', array(
             'required' => false
         ))
-        ->add('roof_batts')
-        ->add('roof_infill')
-        ->add('roof_foil')
-        ->add('no_roof_ins')
+        ->add('roof_insulation', 'choice', array(
+            'choices' => array(
+                'roof_batts'  => 'Batts',
+                'roof_infill' => 'Foam infill',
+                'roof_foil'   => 'Reflective foil'
+            ),
+            'multiple' => true,
+            'required' => false
+        ))
+        ->add('no_roof_ins', 'checkbox', array(
+            'label' => 'No insulation',
+            'required' => false
+        ))
         ->add('roof_insulation_other', 'text', array(
             'required' => false
         ))
-        ->add('slab_on_ground')
-        ->add('slab_off_ground')
-        ->add('timber_boards')
+        ->add('floor_construction', 'choice', array(
+            'choices' => array(
+                'slab_on_ground'  => 'Concrete Slab on ground',
+                'slab_off_ground' => 'Concrete Slab off ground',
+                'timber_boards'   => 'Timber boards'
+            ),
+            'multiple' => true
+        ))
         ->add('floor_construction_other', 'text', array(
             'required' => false
         ))
-        ->add('floor_batts')
-        ->add('floor_infill')
-        ->add('floor_foil')
-        ->add('no_floor_ins')
+        ->add('floor_insulation', 'choice', array(
+            'choices' => array(
+                'floor_batts'  => 'Batts',
+                'floor_infill' => 'Foam infill',
+                'floor_foil'   => 'Reflective foil'
+            ),
+            'multiple' => true,
+            'required' => false
+        ))
+        ->add('floor_ins', 'checkbox', array(
+            'label' => 'No insulation',
+            'required' => false
+        ))
         ->add('floor_insulation_other', 'text', array(
             'required' => false
         ))
-        ->add('rooms_carpeted')
-        ->add('rooms_tiled')
-        ->add('rooms_timber_floors')
+        ->add('rooms_carpeted', 'choice', array(
+            'choices' => array(
+                '0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%',
+                '90%', '100%'
+            ),
+            'label' => 'Percentage of rooms carpeted'
+        ))
+        ->add('rooms_tiled', 'choice', array(
+            'choices' => array(
+                '0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%',
+                '90%', '100%'
+            ),
+            'label' => 'Percentage of rooms tiled'
+        ))
+        ->add('rooms_timber_floors', 'choice', array(
+            'choices' => array(
+                '0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%',
+                '90%', '100%'
+            ),
+            'label' => 'Percentage of rooms with timber floors'
+        ))
         ->add('windows_glazing', 'choice', array(
             'choices' => array(
                 'Single glazed', 'Single glazed with reflective coating',
@@ -222,8 +276,14 @@ $app->get('/', function() use ($app, $client) {
         ->add('other_internal', 'text', array(
             'required' => false
         ))
-        ->add('window_coverings_internal_pelmets')
-        ->add('no_pelmets')
+        ->add('window_coverings_internal_pelmets', 'checkbox', array(
+            'label' => 'Window Coverings Internal Pelmets',
+            'required' => false
+        ))
+        ->add('no_pelmets', 'checkbox', array(
+            'label' => 'No Pelmets',
+            'required' => false
+        ))
         ->add('window_coverings_external', 'choice', array(
             'choices' => array(
                 'Awnings', 'Natural shading'
@@ -232,27 +292,90 @@ $app->get('/', function() use ($app, $client) {
         ->add('other_external', 'text', array(
             'required' => false
         ))
-        ->add('heating_gas_ducted')
-        ->add('heating_gas_room')
-        ->add('heating_electric_ducted')
-        ->add('heating_electric_wall_radiator')
-        ->add('heating_electric_portable_radiator')
-        ->add('heating_electric_oil_bar_header')
-        ->add('heating_hydronic_heating_wall')
-        ->add('heating_hydronic_heating_slab')
-        ->add('heating_reverse_cycle_pre_2000')
-        ->add('heating_reverse_cycle_post_2000')
-        ->add('heating_wood_fired')
-        ->add('cooling_reverse_cycle_pre_2000')
-        ->add('cooling_reverse_cycle_post_2000')
-        ->add('cooling_ceiling_fan')
-        ->add('cooling_ducted_evaporative_cooling')
-        ->add('cooling_room_evaporative_cooling')
-        ->add('cooking_gas_cooktop')
-        ->add('cooking_electric_ceramic_cooktop')
-        ->add('cooking_induction_cooktop')
-        ->add('cooking_electric_oven')
-        ->add('cooking_gas_oven')
+        ->add('heating_gas_ducted', 'checkbox', array(
+            'label' => 'Heating: Gas ducted',
+            'required' => false
+        ))
+        ->add('heating_gas_room', 'checkbox', array(
+            'label' => 'Heating: Gas in room',
+            'required' => false
+        ))
+        ->add('heating_electric_ducted', 'checkbox', array(
+            'label' => 'Heating: Electric ducted',
+            'required' => false
+        ))
+        ->add('heating_electric_wall_radiator', 'checkbox', array(
+            'label' => 'Heating: Electric on wall radiator',
+            'required' => false
+        ))
+        ->add('heating_electric_portable_radiator', 'checkbox', array(
+            'label' => 'Heating: Electric portable radiator',
+            'required' => false
+        ))
+        ->add('heating_electric_oil_bar_heater', 'checkbox', array(
+            'label' => 'Heating: Electric oil/bar heater',
+            'required' => false
+        ))
+        ->add('heating_hydronic_heating_wall', 'checkbox', array(
+            'label' => 'Heating: Hydronic heating on wall',
+            'required' => false
+        ))
+        ->add('heating_hydronic_heating_slab', 'checkbox', array(
+            'label' => 'Heating: Hydronic heating in slab',
+            'required' => false
+        ))
+        ->add('heating_reverse_cycle_pre_2000', 'checkbox', array(
+            'label' => 'Heating: Reverse cycle air conditioner installed pre 2000',
+            'required' => false
+        ))
+        ->add('heating_reverse_cycle_post_2000', 'checkbox', array(
+            'label' => 'Heating: Reverse cycle air conditioner installed post 2000',
+            'required' => false
+        ))
+        ->add('heating_wood_fired', 'checkbox', array(
+            'label' => 'Heating: Wood-fired',
+            'required' => false
+        ))
+        ->add('cooling_reverse_cycle_pre_2000', 'checkbox', array(
+            'label' => 'Cooling: Reverse cycle air conditioner installed pre 2000',
+            'required' => false
+        ))
+        ->add('cooling_reverse_cycle_post_2000', 'checkbox', array(
+            'label' => 'Cooling: Reverse cycle air conditioner installed post 2000',
+            'required' => false
+        ))
+        ->add('cooling_ceiling_fan', 'checkbox', array(
+            'label' => 'Cooling: Ceiling fan',
+            'required' => false
+        ))
+        ->add('cooling_ducted_evaporative_cooling', 'checkbox', array(
+            'label' => 'Cooling: Ducted evaporative cooling',
+            'required' => false
+        ))
+        ->add('cooling_room_evaporative_cooling', 'checkbox', array(
+            'label' => 'Cooling: In room evaporative cooling',
+            'required' => false
+        ))
+        ->add('cooking_gas_cooktop', 'checkbox', array(
+            'label' => 'Cooking: Gas cooktop',
+            'required' => false
+        ))
+        ->add('cooking_electric_ceramic_cooktop', 'checkbox', array(
+            'label' => 'Cooking: Electric ceramic cooktop',
+            'required' => false
+        ))
+        ->add('cooking_induction_cooktop', 'checkbox', array(
+            'label' => 'Cooking: Induction cooktop',
+            'required' => false
+        ))
+        ->add('cooking_electric_oven', 'checkbox', array(
+            'label' => 'Cooking: Electric oven',
+            'required' => false
+        ))
+        ->add('cooking_gas_oven', 'checkbox', array(
+            'label' => 'Cooking: Gas oven',
+            'required' => false
+        ))
         ->add('hot_water', 'choice', array(
             'choices' => array(
                 'Solar with gas booster', 'Solar with electric booster',
@@ -269,14 +392,38 @@ $app->get('/', function() use ($app, $client) {
                 'Producing an excess of electricity'
             )
         ))
-        ->add('action_display')
-        ->add('action_led')
-        ->add('action_draft_proofing')
-        ->add('action_reverse_cycle')
-        ->add('action_efficiency_appliances')
-        ->add('action_double_glazing')
-        ->add('action_wall_insulation')
-        ->add('action_solar')
+        ->add('action_display', 'checkbox', array(
+            'label' => 'Action: In-home display connected to your smart meter',
+            'required' => false
+        ))
+        ->add('action_led', 'checkbox', array(
+            'label' => 'Action: Replaced Halogen downlights with LED’s',
+            'required' => false
+        ))
+        ->add('action_draft_proofing', 'checkbox', array(
+            'label' => 'Action: Draft-proofing measures',
+            'required' => false
+        ))
+        ->add('action_reverse_cycle', 'checkbox', array(
+            'label' => 'Action: High efficiency reverse cycle air conditioner for heating and cooling',
+            'required' => false
+        ))
+        ->add('action_efficiency_appliances', 'checkbox', array(
+            'label' => 'Action: High efficiency appliances',
+            'required' => false
+        ))
+        ->add('action_double_glazing', 'checkbox', array(
+            'label' => 'Action: Retrofitted double glazing for your windows',
+            'required' => false
+        ))
+        ->add('action_wall_insulation', 'checkbox', array(
+            'label' => 'Action: Retrofitted wall insulation',
+            'required' => false
+        ))
+        ->add('action_solar', 'checkbox', array(
+            'label' => 'Action: Installed rooftop solar',
+            'required' => false
+        ))
         ->add('solar_amount', 'choice', array(
             'choices' => array(
                 '1kw', '1.5kw', '2kw', '2.5kw', '3kw', '3.5kw', '4kw', '4.5kw',

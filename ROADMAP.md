@@ -4,15 +4,14 @@ ROADMAP
 0.1
 ---
 
-* Test cases written.
+* App ready for developer testing.
 
 0.2
 ---
 
-* App ready for developer testing.
+* App ready for client testing.
 
 1.0
 ---
 
-* App ready for client testing.
-
+* App ready for public use.

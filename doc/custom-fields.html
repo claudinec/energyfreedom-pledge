@@ -1,0 +1,152 @@
+
+<!-- ##### -->    <h4>What type of house do you have?</h4>
+ {% collection_select "signup.custom_values.house_type", custom_fields.signup.house_type.multiple_choice_options %}
+    <br /> Other: {% text_field "signup.custom_values.house_type_other" %}
+
+<!-- =========== --> <hr />
+
+ <!-- ##### -->  <h4>What are your walls constructed from?</h4>
+{% check_box "signup.custom_values.brick_veneer" %} Brick veneer <br />
+{% check_box "signup.custom_values.double_brick" %} Double brick<br />
+{% check_box "signup.custom_values.weatherboard" %} Weatherboard <br />
+{% check_box "signup.custom_values.al_cladding" %} Aluminium cladding <br />
+{% check_box "signup.custom_values.panels" %} Structurally intergrated panels <br />
+    <br /> Other: {% text_field "signup.custom_values.wall_construction_other" %}
+<br /><br />
+<!-- ##### --> <h4>What kind of insulation do you have in your walls?</h4>
+    {% check_box "signup.custom_values.wall_batts" %} Batts  <br />
+{% check_box "signup.custom_values.wall_infill" %} Foam infill <br />
+{% check_box "signup.custom_values.wall_foil" %} Reflective foil <br />
+       {% check_box "signup.custom_values.no_ins" %} No insulation  <br />
+    <br />Other: {% text_field "signup.custom_values.wall_insulation_other" %} <br />
+
+ <!--     Do you know the combined R value of your wall insulation -->
+ <!-- {% collection_select "signup.custom_values.wall_r_value", custom_fields.signup.wall_r_value.multiple_choice_options %} -->
+
+ <!-- =========== --> <hr />
+
+<!-- ##### -->  <h4>What is your roof constructed from?</h4>
+{% check_box "signup.custom_values.tiles" %} Tiles <br />
+{% check_box "signup.custom_values.corrugated_metal" %} Corrugated metal <br />
+{% check_box "signup.custom_values.slate" %} Slate <br />
+    <br /> Other: {% text_field "signup.custom_values.roof_construction_other" %}
+<br /><br />
+<!-- ##### -->  <h4>What kind of insulation do you have in your roof?</h4>
+{% check_box "signup.custom_values.roof_batts" %} Batts  <br />
+{% check_box "signup.custom_values.roof_infill" %} Foam infill <br />
+{% check_box "signup.custom_values.roof_foil" %} Reflective foil <br />
+    {% check_box "signup.custom_values.no_roof_ins" %} No insulation <br />
+
+    <br />Other: {% text_field "signup.custom_values.roof_insulation_other" %} <br />
+
+ <!--     Do you know the combined R value of your roof insulation -->
+ <!-- {% collection_select "signup.custom_values.roof_r_value", custom_fields.signup.roof_r_value.multiple_choice_options %} -->
+
+  <!-- =========== -->  <hr />
+
+<!-- ##### -->  <h4>What is your floor constructed from?</h4>
+{% check_box "signup.custom_values.slab_on_ground" %} Concrete Slab on ground <br />
+{% check_box "signup.custom_values.slab_off_ground" %} Concrete Slab off ground <br />
+{% check_box "signup.custom_values.timber_boards" %} Timber boards <br />
+
+    <br />Other: {% text_field "signup.custom_values.floor_construction_other" %} <br /><br />
+
+<!-- ##### -->  <h4>What kind of underfloor insulation do you have?</h4>
+{% check_box "signup.custom_values.floor_batts" %} Batts  <br />
+{% check_box "signup.custom_values.floor_infill" %} Foam infill <br />
+{% check_box "signup.custom_values.floor_foil" %} Reflective foil <br />
+    {% check_box "signup.custom_values.no_floor_ins" %} No insulation <br />
+
+    <br />Other: {% text_field "signup.custom_values.floor_insulation_other" %} <br />
+
+ <!--     Do you know the combined R value of your floor insulation -->
+<!-- {% collection_select "signup.custom_values.floor_r_value", custom_fields.signup.floor_r_value.multiple_choice_options %} -->
+<br />
+<!-- ##### -->  <h4>Floor coverings</h4>
+<br />Percentage of rooms carpeted? {% collection_select "signup.custom_values.rooms_carpeted", custom_fields.signup.rooms_carpeted.multiple_choice_options %}
+<br />Percentage of rooms tiled? {% collection_select "signup.custom_values.rooms_tiled", custom_fields.signup.rooms_tiled.multiple_choice_options %}
+<br />Percentage of rooms with timber floors? {% collection_select "signup.custom_values.rooms_timber_floors", custom_fields.signup.rooms_timber_floors.multiple_choice_options %}
+
+ <!-- =========== -->  <hr />
+
+<!-- ##### -->    <h4>What type of windows do you have?</h4>
+
+Glazing:
+ {% collection_select "signup.custom_values.windows_glazing", custom_fields.signup.windows_glazing.multiple_choice_options %}
+       <br />
+
+Frame:
+ {% collection_select "signup.custom_values.window_frame", custom_fields.signup.window_frame.multiple_choice_options %}
+    <br /> Other: {% text_field "signup.custom_values.window_frame_other" %}
+  <br />
+   <br />
+ <!-- ##### -->    <h4>What type of window coverings do you have?</h4>
+     Internal:
+      {% collection_select "signup.custom_values.window_coverings_internal", custom_fields.signup.window_coverings_internal.multiple_choice_options %}
+    <br /> Other: {% text_field "signup.custom_values.other_internal" %}     <br />
+            Do you have pelmets? Yes {% check_box "signup.custom_values.window_coverings_internal_pelmets" %} No {% check_box "signup.custom_values.no_pelmets" %}
+            <br />     <br />
+            External:
+             {% collection_select "signup.custom_values.window_coverings_external", custom_fields.signup.window_coverings_external.multiple_choice_options %}
+    <br /> Other: {% text_field "signup.custom_values.other_external" %}
+
+  <!-- =========== -->  <hr />
+
+ <!-- ##### -->    <h4>How do you heat your home?</h4>
+   {% check_box "signup.custom_values.heating_gas_ducted" %} Gas ducted  <br />
+   {% check_box "signup.custom_values.heating_gas_room" %} Gas in room  <br />
+   {% check_box "signup.custom_values.heating_electric_ducted" %} Electric ducted  <br />
+   {% check_box "signup.custom_values.heating_electric_wall_radiator" %} Electric on wall radiator  <br />
+   {% check_box "signup.custom_values.heating_electric_portable_radiator" %} Electric portable radiator  <br />
+   {% check_box "signup.custom_values.heating_electric_oil_bar_heater" %} Electric oil/bar heater  <br />
+   {% check_box "signup.custom_values.heating_hydronic_heating_wall" %} Hydronic heating on wall  <br />
+   {% check_box "signup.custom_values.heating_hydronic_heating_slab" %} Hydronic heating in slab  <br />
+   {% check_box "signup.custom_values.heating_reverse_cycle_pre_2000" %} Reverse cycle air conditioner installed pre 2000  <br />
+   {% check_box "signup.custom_values.heating_reverse_cycle_post_2000" %} Reverse cycle air conditioner installed post 2000  <br />
+   {% check_box "signup.custom_values.heating_wood_fired" %} Wood-fired heating
+
+        <br />     <br />
+
+
+<!-- ##### -->    <h4>How do you cool your home?</h4>
+
+     {% check_box "signup.custom_values.cooling_reverse_cycle_pre_2000" %}  Reverse cycle air conditioner installed pre 2000 <br />
+      {% check_box "signup.custom_values.cooling_reverse_cycle_post_2000" %}  Reverse cycle air conditioner installed post 2000 <br />
+       {% check_box "signup.custom_values.cooling_ceiling_fan" %}  Ceiling fan <br />
+        {% check_box "signup.custom_values.cooling_ducted_evaporative_cooling" %} Ducted evaporative cooling <br />
+         {% check_box "signup.custom_values.cooling_room_evaporative_cooling" %}  In room evaporative cooling
+
+
+
+
+
+<br />     <br />
+
+<!-- ##### -->    <h4>How do you cook?</h4>
+
+     {% check_box "signup.custom_values.cooking_gas_cooktop" %} Gas cooktop<br />
+     {% check_box "signup.custom_values.cooking_electric_ceramic_cooktop" %} Electric ceramic cooktop<br />
+     {% check_box "signup.custom_values.cooking_induction_cooktop" %} Induction cooktop<br />
+     {% check_box "signup.custom_values.cooking_electric_oven" %} Electric oven<br />
+     {% check_box "signup.custom_values.cooking_gas_oven" %} Gas oven
+
+
+   <br />     <br />
+   <!-- ##### -->    <h4>How do you heat your water?</h4>
+
+
+         {% collection_select "signup.custom_values.hot_water", custom_fields.signup.hot_water.multiple_choice_options %}
+
+
+         <br />     <br />
+         <!-- ##### -->    <h4>What actions have you already taken?</h4>
+
+      {% check_box "signup.custom_values.action_display" %}   In-home display connected to your smart meter  <br />
+      {% check_box "signup.custom_values.action_led" %}   Replaced Halogen downlights with LED’s  <br />
+
+      {% check_box "signup.custom_values.action_draft_proofing" %}   Draught-proofing measures  <br />
+    {% check_box "signup.custom_values.action_reverse_cycle" %}   High efficiency reverse cycle air conditioner/s  <br />
+      {% check_box "signup.custom_values.action_efficiency_appliances" %}   High efficiency appliances  <br />
+      {% check_box "signup.custom_values.action_double_glazing" %}   Retrofitted double glazing for your windows  <br />
+      {% check_box "signup.custom_values.action_wall_insulation" %}   Retrofitted wall insulation    <br />
+   {% check_box "signup.custom_values.action_solar" %}   Installed rooftop solar - How much?  {% collection_select "signup.custom_values.solar_amount", custom_fields.signup.solar_amount.multiple_choice_options %}

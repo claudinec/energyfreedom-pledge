@@ -61,7 +61,7 @@ $app->get('/', function() use ($app, $client) {
      'twig.path' => __DIR__ . '/../views',
  ));
 
- $app->get('/pledge', function (Request $request) use ($app, $client) {
+ $app->match('/pledge', function (Request $request) use ($app, $client) {
      global $appUrl, $baseApiUrl, $redirectUrl;
      $code = $app['request']->get('code');
 
@@ -442,12 +442,10 @@ $app->get('/', function() use ($app, $client) {
          $data = $form->getData();
 
          // do something with the data
-         return $data;
-         // TODO Submit the data to NationBuilder.
-         // TODO Display a message to the user.
+          return $data;
 
          // redirect somewhere
-         // return $app->redirect('...');
+         return $app->redirect('/pledge/submit');
      }
 
     //  return $app['twig']->render('pledge.html.twig', $data);
@@ -460,8 +458,10 @@ $app->get('/', function() use ($app, $client) {
 /**
  * Submit the data to NationBuilder.
  */
-// $app->post('/pledge/submit', function (Request $request) use ($app, $client) {
-//     return $request;
-// });
+$app->post('/pledge/submit', function (Request $request) use ($app, $client) {
+    return $request;
+        // TODO Submit the data to NationBuilder.
+        // TODO Display a message to the user.
+});
 
 $app->run();

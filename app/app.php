@@ -430,6 +430,7 @@ $app->register(new Silex\Provider\FormServiceProvider());
             'required' => false
         ))
         ->add('volunteer_signup_content', 'textarea', array(
+            'label'    => 'Comments, other ideas, etc.',
             'required' => false
         ))
         ->getForm();

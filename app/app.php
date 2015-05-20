@@ -59,6 +59,26 @@ $app->register(new Silex\Provider\FormServiceProvider());
      'twig.path' => __DIR__ . '/../views',
  ));
 
+ function check_token($response) {
+     if (isset($response['result']['error'])) {
+         switch($response['result']['error']) {
+             case 'invalid_grant':
+                 $error = "<p><strong>ERROR</strong>: Invalid Grant. This code is invalid, expired, or revoked. <strong><a href='/'>START AGAIN.</a></strong></p>";
+                 $app['monolog']->addError($error);
+                 break;
+
+             default:
+                 $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
+                     . $response['result']['error_description'] . "<br>";
+                 $app['monolog']->addError($error);
+                 break;
+         }
+
+     // End execution and display error message.
+        die($error);
+     }
+ }
+
  $app->match('/pledge', function (Request $request) use ($app, $client) {
      global $appUrl, $baseApiUrl, $redirectUrl;
      $code = $app['request']->get('code');
@@ -69,22 +89,7 @@ $app->register(new Silex\Provider\FormServiceProvider());
      $response = $client->getAccessToken($accessTokenUrl, 'authorization_code', $params);
 
      // See if we got a valid token back or an error.
-     if (isset($response['result']['error'])) {
-     switch($response['result']['error']) {
-         case 'invalid_grant':
-             $error = "<p><strong>ERROR</strong>: Invalid Grant. This code is invalid, expired, or revoked. <strong><a href='/'>START AGAIN.</a></strong></p>";
-             $app['monolog']->addError("This code is invalid, expired, or revoked.");
-             break;
-
-         default:
-             $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
-                 . $response['result']['error_description'] . "<br>";
-             break;
-     }
-
-     // End execution and display error message.
-        die($error);
-     }
+    //  check_token($response);
 
      // Set the client token.
      $token = $response['result']['access_token'];
@@ -95,13 +100,7 @@ $app->register(new Silex\Provider\FormServiceProvider());
      $result = json_decode($response);
 
      // See if we got a valid response back or an error.
-     if (isset($response['result']['error'])) {
-         $error = "<b>Unknown error:</b> " . $response['result']['error'] . " - "
-             . $response['result']['error_description'] . "<br>";
-
- 	    // End execution and display error message.
- 	    die($error);
-     }
+     check_token($response);
 
      // Query custom field values and pre-fill form with them.
      $field_names = array(
@@ -171,7 +170,8 @@ $app->register(new Silex\Provider\FormServiceProvider());
             'required' => false
         ))
         ->add('no_ins', 'checkbox', array(
-            'label' => 'No insulation'
+            'label' => 'No insulation',
+            'required' => false
         ))
         ->add('wall_insulation_other', 'text', array(
             'required' => false

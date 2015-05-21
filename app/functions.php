@@ -49,6 +49,7 @@ function set_token($app, $client) {
 
     // Set the client token.
     $token = $response['result']['access_token'];
+    $client->setAccessTokenType(1);
     $client->setAccessToken($token);
     $app['monolog']->addInfo('Token: ' . $token);
 

@@ -4,13 +4,9 @@
  */
 
 // FIXME Check whether user is logged in to our nation.
-function check_auth($app, $client) {
-    $authUrl = $client->getAuthenticationUrl(AUTHORIZATION_ENDPOINT, REDIRECT_URL);
-    global $authUrl;
-
+function check_auth($app) {
     if (!isset($_GET['code'])) {
-        $code = $_GET['code'];
-        $app['monolog']->addInfo('Code: ' . $code);
+        $authUrl = $client->getAuthenticationUrl(AUTHORIZATION_ENDPOINT, REDIRECT_URL);
         return $app->redirect($authUrl);
     }
     // If we do, redirect to the pledge app.

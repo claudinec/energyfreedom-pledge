@@ -4,6 +4,10 @@
  */
 require_once __DIR__ . '/../vendor/autoload.php';
 
+require 'functions.php';
+require 'providers.php';
+require 'vars.php';
+
 $oauth_path = __DIR__ . '/../vendor/adoy/oauth2/src/OAuth2/';
 require $oauth_path . 'Client.php';
 require $oauth_path . 'GrantType/IGrantType.php';

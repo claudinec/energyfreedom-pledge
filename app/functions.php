@@ -5,7 +5,7 @@
 
 // FIXME Check whether user is logged in to our nation.
 function check_auth($app, $client) {
-    $authUrl = $client->getAuthenticationUrl(AUTHORIZE_URL, REDIRECT_URL);
+    $authUrl = $client->getAuthenticationUrl(AUTHORIZATION_ENDPOINT, REDIRECT_URL);
     global $authUrl;
 
     if (!isset($_GET['code'])) {
@@ -27,7 +27,7 @@ function set_token($app, $client) {
 
     // Generate a token response.
     $params = array('code' => $code, 'redirect_uri' => $redirectUrl);
-    $response = $client->getAccessToken(ACCESS_TOKEN_URL, 'authorization_code', $params);
+    $response = $client->getAccessToken(TOKEN_ENDPOINT, 'authorization_code', $params);
 
     if (isset($response['result']['error'])) {
         switch($response['result']['error']) {

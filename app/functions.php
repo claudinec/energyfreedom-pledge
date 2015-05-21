@@ -3,26 +3,27 @@
  * Functions for use in pledge viewer app.
  */
 
-// FIXME Check whether user is logged in to our nation.
-function check_auth($app) {
+// Check whether user is logged in to our nation.
+function check_auth($app, $client) {
     if (!isset($_GET['code'])) {
         $authUrl = $client->getAuthenticationUrl(AUTHORIZATION_ENDPOINT, REDIRECT_URL);
         return $app->redirect($authUrl);
     }
     // If we do, redirect to the pledge app.
     else {
+        // Redirect to the app.
         return $app->redirect(REDIRECT_URL);
     }
 }
 
-// FIXME Get an access token from NationBuilder.
+// Get an access token from NationBuilder.
 function set_token($app, $client) {
     $code = $app['request']->get('code');
     $code = $_GET['code'];
     $app['monolog']->addInfo('Code: ' . $code);
 
     // Generate a token response.
-    $params = array('code' => $code, 'redirect_uri' => $redirectUrl);
+    $params = array('code' => $code, 'redirect_uri' => REDIRECT_URL);
     $response = $client->getAccessToken(TOKEN_ENDPOINT, 'authorization_code', $params);
 
     if (isset($response['result']['error'])) {
@@ -49,9 +50,5 @@ function set_token($app, $client) {
     $client->setAccessToken($token);
     $app['monolog']->addInfo('Token: ' . $token);
 
-    // Fetch the user's profile.
-    $response = $client->fetch(BASE_API_URL . '/api/v1/people/me.json');
-    $result = json_decode($response);
-
-    return $result;
+    return $token;
 }

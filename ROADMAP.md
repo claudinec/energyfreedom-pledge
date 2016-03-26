@@ -11,8 +11,13 @@ ROADMAP
 
 * App ready for developer testing.
 
-1.0
+0.3
 ---
 
 * App ready for client testing.
+
+1.0
+---
+
+* App ready for public use.
 

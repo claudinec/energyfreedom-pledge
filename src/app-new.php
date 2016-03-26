@@ -20,7 +20,7 @@ $app['debug'] = true;
  * Register Monolog.
  */
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => __DIR__.'/../logs/development.log',
+    'monolog.logfile' => __DIR__.'/../var/logs/development.log',
     'monolog.level'   => "WARNING",
     'monolog.name'    => "pledge",
 ));
@@ -56,7 +56,7 @@ $app->register(new Silex\Provider\FormServiceProvider());
   * Register Twig provider.
   */
  $app->register(new Silex\Provider\TwigServiceProvider(), array(
-     'twig.path' => __DIR__ . '/../views',
+     'twig.path' => __DIR__ . '/../templates',
  ));
 
  $app->match('/pledge', function (Request $request) use ($app, $client) {

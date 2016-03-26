@@ -663,72 +663,6 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "symfony/security-core",
-        "version": "v2.6.7",
-        "version_normalized": "2.6.7.0",
-        "target-dir": "Symfony/Component/Security/Core",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/security-core.git",
-            "reference": "d25c17db741f58c0f615e52006a47f6fb23cd9b3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/security-core/zipball/d25c17db741f58c0f615e52006a47f6fb23cd9b3",
-            "reference": "d25c17db741f58c0f615e52006a47f6fb23cd9b3",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "ircmaxell/password-compat": "1.0.*",
-            "psr/log": "~1.0",
-            "symfony/event-dispatcher": "~2.1",
-            "symfony/expression-language": "~2.6",
-            "symfony/http-foundation": "~2.4",
-            "symfony/phpunit-bridge": "~2.7",
-            "symfony/translation": "~2.0,>=2.0.5",
-            "symfony/validator": "~2.5,>=2.5.5"
-        },
-        "suggest": {
-            "ircmaxell/password-compat": "For using the BCrypt password encoder in PHP <5.5",
-            "symfony/event-dispatcher": "",
-            "symfony/expression-language": "For using the expression voter",
-            "symfony/http-foundation": "",
-            "symfony/validator": "For using the user password constraint"
-        },
-        "time": "2015-03-30 15:54:10",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\Security\\Core\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Symfony Security Component - Core Library",
-        "homepage": "http://symfony.com"
-    },
-    {
         "name": "symfony/security-csrf",
         "version": "v2.6.7",
         "version_normalized": "2.6.7.0",
@@ -1452,6 +1386,9 @@
         "name": "symfony/security",
         "version": "v2.3.28",
         "version_normalized": "2.3.28.0",
+        "name": "symfony/security",
+        "version": "v2.5.11",
+        "version_normalized": "2.5.11.0",
         "target-dir": "Symfony/Component/Security",
         "source": {
             "type": "git",
@@ -1462,13 +1399,24 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/Security/zipball/4bc570e4ecad43b827f5c8852a4a4616ede89e4e",
             "reference": "4bc570e4ecad43b827f5c8852a4a4616ede89e4e",
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Security/zipball/4cf41cef4ad7377ea89fb3856e2b07b925aa15cf",
+            "reference": "4cf41cef4ad7377ea89fb3856e2b07b925aa15cf",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3",
             "symfony/event-dispatcher": "~2.2",
             "symfony/http-foundation": "~2.1",
-            "symfony/http-kernel": "~2.1"
+            "symfony/http-kernel": "~2.4"
+        },
+        "replace": {
+            "symfony/security-acl": "self.version",
+            "symfony/security-core": "self.version",
+            "symfony/security-csrf": "self.version",
+            "symfony/security-http": "self.version"
         },
         "require-dev": {
             "doctrine/common": "~2.2",
@@ -1657,6 +1605,40 @@
         },
         "time": "2015-05-02 15:18:45",
         "type": "library",
+        "description": "Symfony Stopwatch Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/web-profiler-bundle",
+        "version": "v2.6.7",
+        "version_normalized": "2.6.7.0",
+        "target-dir": "Symfony/Bundle/WebProfilerBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/WebProfilerBundle.git",
+            "reference": "0a507eaeac1c65b51cf295c9913f686b214d8f38"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/WebProfilerBundle/zipball/0a507eaeac1c65b51cf295c9913f686b214d8f38",
+            "reference": "0a507eaeac1c65b51cf295c9913f686b214d8f38",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "symfony/http-kernel": "~2.4",
+            "symfony/routing": "~2.2",
+            "symfony/twig-bridge": "~2.2"
+        },
+        "require-dev": {
+            "symfony/config": "~2.2",
+            "symfony/console": "~2.3",
+            "symfony/dependency-injection": "~2.2",
+            "symfony/phpunit-bridge": "~2.7",
+            "symfony/stopwatch": "~2.2"
+        },
+        "time": "2015-05-02 15:18:45",
+        "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
                 "dev-master": "2.6-dev"
@@ -1665,7 +1647,7 @@
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "Symfony\\Component\\Finder\\": ""
+                "Symfony\\Bundle\\WebProfilerBundle\\": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1770,6 +1752,8 @@
             "psr/log": "For using the console logger",
             "symfony/event-dispatcher": "",
             "symfony/process": ""
+            "symfony/finder": "~2.0,>=2.0.5",
+            "symfony/phpunit-bridge": "~2.7"
         },
         "time": "2015-05-02 15:18:45",
         "type": "library",
@@ -1928,18 +1912,15 @@
         "require-dev": {
             "symfony/finder": "~2.0,>=2.0.5",
             "symfony/phpunit-bridge": "~2.7"
+            "psr/log": "~1.0",
+            "symfony/event-dispatcher": "~2.1",
+            "symfony/phpunit-bridge": "~2.7",
+            "symfony/process": "~2.1"
         },
-        "time": "2015-05-02 15:18:45",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\Component\\ClassLoader\\": ""
+        "suggest": {
+            "psr/log": "For using the console logger",
+            "symfony/event-dispatcher": "",
+            "symfony/process": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -2000,6 +1981,10 @@
         ],
         "authors": [
             {
+                "name": "Jean-François Simon",
+                "email": "jeanfrancois.simon@sensiolabs.com"
+            },
+            {
                 "name": "Fabien Potencier",
                 "email": "fabien@symfony.com"
             },
@@ -2042,6 +2027,33 @@
         },
         "time": "2015-05-02 15:18:45",
         "type": "symfony-bundle",
+        "description": "Symfony CssSelector Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/finder",
+        "version": "v2.6.7",
+        "version_normalized": "2.6.7.0",
+        "target-dir": "Symfony/Component/Finder",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Finder.git",
+            "reference": "704c64c8b12c8882640d5c0330a8414b1e06dc99"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Finder/zipball/704c64c8b12c8882640d5c0330a8414b1e06dc99",
+            "reference": "704c64c8b12c8882640d5c0330a8414b1e06dc99",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "~2.7"
+        },
+        "time": "2015-05-02 15:18:45",
+        "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "2.6-dev"
@@ -2050,7 +2062,7 @@
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "Symfony\\Bundle\\WebProfilerBundle\\": ""
+                "Symfony\\Component\\Finder\\": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -2156,12 +2168,49 @@
         "extra": {
             "branch-alias": {
                 "dev-master": "1.1.x-dev"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Monolog Bridge",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/process",
+        "version": "v2.6.7",
+        "version_normalized": "2.6.7.0",
+        "target-dir": "Symfony/Component/Process",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Process.git",
+            "reference": "9f3c4baaf840ed849e1b1f7bfd5ae246e8509562"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Process/zipball/9f3c4baaf840ed849e1b1f7bfd5ae246e8509562",
+            "reference": "9f3c4baaf840ed849e1b1f7bfd5ae246e8509562",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "~2.7"
+        },
+        "time": "2015-05-02 15:18:45",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.6-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "": "src/"
+                "Symfony\\Component\\Process\\": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -2169,5 +2218,17 @@
             "MIT"
         ],
         "description": "A pre-configured skeleton for the Silex microframework"
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Process Component",
+        "homepage": "https://symfony.com"
     }
 ]

@@ -40,4 +40,5 @@ return array(
     'Pimple' => array($vendorDir . '/pimple/pimple/lib'),
     'OAuth2' => array($vendorDir . '/adoy/oauth2/src'),
     '' => array($vendorDir . '/fabpot/silex-skeleton/src'),
+    '' => array($baseDir . '/src'),
 );

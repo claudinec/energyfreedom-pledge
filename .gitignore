@@ -1,5 +1,7 @@
 *.lock
 *.phar
+composer.lock
 cache/*
 config/*
 logs/*
+/vendor/
